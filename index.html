@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Skicka ett e-kort</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    .card-choice {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .card-choice img {
+      width: 200px;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+    .card-choice img:hover {
+      transform: scale(1.05);
+    }
+    #ecard-view {
+      display: none;
+      margin-top: 30px;
+    }
+    .ecard-image {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+    input, textarea {
+      margin: 10px 0;
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+    }
+    .actions {
+      margin-top: 20px;
+    }
+    .actions img {
+      width: 120px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .confirmation {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Välj ett e-kort</h1>
+  <div class="card-choice">
+    <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')">
+    <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')">
+    <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')">
+  </div>
+
+  <div id="ecard-view">
+    <h2>Ditt e-kort</h2>
+    <div id="ecard-content">
+      <img id="ecard-img" class="ecard-image" src="" alt="Valt e-kort">
+      <p id="ecard-text"></p>
+      <p id="ecard-from"></p>
+    </div>
+
+    <form id="ecard-form" onsubmit="handleSubmit(event)">
+      <input type="text" id="fromName" placeholder="Från (ditt namn)" required><br>
+      <textarea id="customMsg" rows="4" placeholder="Ditt meddelande"></textarea><br>
+      <div class="actions">
+        <img src="images/download.png" alt="Ladda ner" onclick="downloadCard()">
+        <img src="images/copylink.png" alt="Kopiera länk" onclick="copyLink()">
+        <img src="images/sharefb.png" alt="Dela på Facebook" onclick="shareFacebook()">
+      </div>
+    </form>
+    <div id="confirmation" class="confirmation"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    let selectedCard = '';
+    const cardMap = {
+      bio: {
+        img: 'images/bio.jpg',
+        defaultMessage: 'Vill du gå på bio med mig?'
+      },
+      vitva: {
+        img: 'images/vitva.jpg',
+        defaultMessage: 'Jag tror den här kan vara något för oss!'
+      },
+      friend: {
+        img: 'images/friend.jpg',
+        defaultMessage: 'Vill du bli min Bob Trevino?'
+      }
+    };
+
+    function selectCard(cardKey) {
+      selectedCard = cardKey;
+      document.getElementById('ecard-img').src = cardMap[cardKey].img;
+      document.getElementById('ecard-text').textContent = cardMap[cardKey].defaultMessage;
+      document.getElementById('ecard-view').style.display = 'block';
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      const from = document.getElementById('fromName').value;
+      const msg = document.getElementById('customMsg').value || cardMap[selectedCard].defaultMessage;
+      document.getElementById('ecard-text').textContent = msg;
+      document.getElementById('ecard-from').textContent = `Från: ${from}`;
+      document.getElementById('confirmation').textContent = 'Kortet är redo att delas!';
+    }
+
+    function downloadCard() {
+      html2canvas(document.getElementById('ecard-content')).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'ecard.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+
+    function copyLink() {
+      const msg = encodeURIComponent(document.getElementById('ecard-text').textContent);
+      const from = encodeURIComponent(document.getElementById('fromName').value);
+      const url = `${window.location.origin}${window.location.pathname}?card=${selectedCard}&msg=${msg}&from=${from}`;
+      navigator.clipboard.writeText(url).then(() => {
+        alert('Länk kopierad!');
+      });
+    }
+
+    function shareFacebook() {
+      const msg = encodeURIComponent(document.getElementById('ecard-text').textContent);
+      const from = encodeURIComponent(document.getElementById('fromName').value);
+      const url = `${window.location.origin}${window.location.pathname}?card=${selectedCard}&msg=${msg}&from=${from}`;
+      const fbURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+      window.open(fbURL, '_blank');
+    }
+
+    // Ladda kort direkt från URL
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('card')) {
+        selectedCard = params.get('card');
+        const msg = decodeURIComponent(params.get('msg') || cardMap[selectedCard].defaultMessage);
+        const from = decodeURIComponent(params.get('from') || '');
+        document.getElementById('ecard-img').src = cardMap[selectedCard].img;
+        document.getElementById('ecard-text').textContent = msg;
+        document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
+        document.getElementById('ecard-view').style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>
