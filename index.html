@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -44,11 +43,11 @@
     .actions {
       margin-top: 20px;
     }
-  .actions img {
-  width: 60px;
-  cursor: pointer;
-  margin: 10px;
-}
+    .actions img {
+      width: 60px;
+      cursor: pointer;
+      margin: 10px;
+    }
     .confirmation {
       margin-top: 20px;
       font-weight: bold;
@@ -59,11 +58,11 @@
 <body>
 
   <h1>Välj ett e-kort</h1>
- <div class="card-choice">
-  <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')">
-  <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')">
-  <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')">
-</div>
+  <div class="card-choice">
+    <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')">
+    <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')">
+    <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')">
+  </div>
 
   <div id="ecard-view">
     <h2>Ditt e-kort</h2>
@@ -84,6 +83,14 @@
       </div>
     </form>
     <div id="confirmation" class="confirmation"></div>
+  </div>
+
+  <div id="trailer" style="display: none; margin-top: 30px;">
+    <h3>Se trailern till filmen:</h3>
+    <iframe width="360" height="215" src="https://www.youtube.com/embed/79cf3-XrXV8" 
+      title="YouTube video player" frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen></iframe>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -145,15 +152,43 @@
       const fbURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
       window.open(fbURL, '_blank');
     }
-function sendViaEmail() {
+
+    function sendViaEmail() {
   const from = document.getElementById('fromName').value;
   const msg = document.getElementById('ecard-text').textContent;
-  const url = window.location.href;
-  const body = encodeURIComponent(`${msg}\n\nFrån: ${from}\n\nSe kortet här: ${url}`);
-  const mailto = `mailto:?subject=E-kort från ${from}&body=${body}`;
+  const msgEncoded = encodeURIComponent(msg);
+  const fromEncoded = encodeURIComponent(from);
+  const link = `${window.location.origin}${window.location.pathname}?card=${selectedCard}&msg=${msgEncoded}&from=${fromEncoded}`;
+
+  const htmlBody = `Du har fått ett e-kort från ${from}:
+
+${msg}
+
+Läs ditt kort här: ${link}`;
+  const body = encodeURIComponent(htmlBody);
+  const subject = encodeURIComponent(`E-kort från ${from}`);
+
+  const mailto = `mailto:?subject=${subject}&body=${body}`;
   window.location.href = mailto;
-}
-    // Ladda kort direkt från URL
+}${window.location.pathname}?card=${selectedCard}&msg=${msgEncoded}&from=${fromEncoded}`;
+
+  const htmlBody = `Du har fått ett e-kort från ${from}:
+
+${msg}
+
+Läs ditt kort här: ${link}`;
+  const body = encodeURIComponent(htmlBody);
+  const subject = encodeURIComponent(`E-kort från ${from}`);
+
+  const mailto = `mailto:?subject=${subject}&body=${body}`;
+  window.location.href = mailto;
+}${window.location.pathname}?card=${selectedCard}&msg=${msgEncoded}&from=${fromEncoded}`;
+      const body = encodeURIComponent(`${msg}\n\nFrån: ${from}\n\nSe kortet här: ${link}`);
+      const mailto = `mailto:?subject=E-kort från ${from}&body=${body}`;
+      window.location.href = mailto;
+    }
+
+    // Ladda kort direkt från URL + dölj resten
     window.onload = () => {
       const params = new URLSearchParams(window.location.search);
       if (params.has('card')) {
@@ -164,6 +199,9 @@ function sendViaEmail() {
         document.getElementById('ecard-text').textContent = msg;
         document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
         document.getElementById('ecard-view').style.display = 'block';
+        document.getElementById('ecard-form').style.display = 'none';
+        document.querySelector('.card-choice').style.display = 'none';
+        document.getElementById('trailer').style.display = 'block';
       }
     }
   </script>
