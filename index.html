@@ -44,11 +44,11 @@
     .actions {
       margin-top: 20px;
     }
-    .actions img {
-      width: 120px;
-      cursor: pointer;
-      margin: 10px;
-    }
+  .actions img {
+  width: 60px;
+  cursor: pointer;
+  margin: 10px;
+}
     .confirmation {
       margin-top: 20px;
       font-weight: bold;
@@ -59,11 +59,11 @@
 <body>
 
   <h1>Välj ett e-kort</h1>
-  <div class="card-choice">
-    <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')">
-    <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')">
-    <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')">
-  </div>
+ <div class="card-choice">
+  <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')">
+  <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')">
+  <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')">
+</div>
 
   <div id="ecard-view">
     <h2>Ditt e-kort</h2>
@@ -80,6 +80,7 @@
         <img src="images/download.png" alt="Ladda ner" onclick="downloadCard()">
         <img src="images/copylink.png" alt="Kopiera länk" onclick="copyLink()">
         <img src="images/sharefb.png" alt="Dela på Facebook" onclick="shareFacebook()">
+        <img src="images/email.png" alt="Skicka via e-post" onclick="sendViaEmail()">
       </div>
     </form>
     <div id="confirmation" class="confirmation"></div>
@@ -144,7 +145,14 @@
       const fbURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
       window.open(fbURL, '_blank');
     }
-
+function sendViaEmail() {
+  const from = document.getElementById('fromName').value;
+  const msg = document.getElementById('ecard-text').textContent;
+  const url = window.location.href;
+  const body = encodeURIComponent(`${msg}\n\nFrån: ${from}\n\nSe kortet här: ${url}`);
+  const mailto = `mailto:?subject=E-kort från ${from}&body=${body}`;
+  window.location.href = mailto;
+}
     // Ladda kort direkt från URL
     window.onload = () => {
       const params = new URLSearchParams(window.location.search);
