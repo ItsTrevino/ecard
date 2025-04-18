@@ -29,10 +29,36 @@
       display: none;
       margin-top: 30px;
     }
-    .ecard-image {
+    #ecard-content {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      text-align: left;
+      border: 1px solid #ccc;
+      padding: 0;
+      margin: 0 auto;
+      width: 600px;
+      background: #fff;
+    }
+    .ecard-left {
+      width: 50%;
+    }
+    .ecard-left img {
       width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
+      height: 100%;
+      object-fit: cover;
+      border-right: 1px solid #ccc;
+    }
+    .ecard-right {
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .ecard-right p {
+      margin: 10px 0;
     }
     input, textarea {
       margin: 10px 0;
@@ -67,9 +93,13 @@
   <div id="ecard-view">
     <h2>Ditt e-kort</h2>
     <div id="ecard-content">
-      <img id="ecard-img" class="ecard-image" src="" alt="Valt e-kort">
-      <p id="ecard-text"></p>
-      <p id="ecard-from"></p>
+      <div class="ecard-left">
+        <img id="ecard-img" src="" alt="Valt e-kort">
+      </div>
+      <div class="ecard-right">
+        <p id="ecard-text"></p>
+        <p id="ecard-from"></p>
+      </div>
     </div>
 
     <form id="ecard-form" onsubmit="handleSubmit(event)">
@@ -87,7 +117,7 @@
 
   <div id="trailer" style="display: none; margin-top: 30px;">
     <h3>Se trailern till filmen:</h3>
-    <iframe width="360" height="215" src="https://www.youtube.com/embed/79cf3-XrXV8" 
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/79cf3-XrXV8" 
       title="YouTube video player" frameborder="0" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen></iframe>
@@ -154,21 +184,24 @@
     }
 
     function sendViaEmail() {
-  const from = document.getElementById('fromName').value;
-  const msg = document.getElementById('ecard-text').textContent;
-  const msgEncoded = encodeURIComponent(msg);
-  const fromEncoded = encodeURIComponent(from);
-  const link = `${window.location.origin}${window.location.pathname}?card=${selectedCard}&msg=${msgEncoded}&from=${fromEncoded}`;
+      const from = document.getElementById('fromName').value;
+      const msg = document.getElementById('ecard-text').textContent;
+      const msgEncoded = encodeURIComponent(msg);
+      const fromEncoded = encodeURIComponent(from);
+      const link = `${window.location.origin}${window.location.pathname}?card=${selectedCard}&msg=${msgEncoded}&from=${fromEncoded}`;
 
-  const htmlBody = `Du har fått ett e-kort från ${from}:\n\n${msg}\n\nLäs ditt kort här: ${link}`;
-  const body = encodeURIComponent(htmlBody);
-  const subject = encodeURIComponent(`E-kort från ${from}`);
+      const htmlBody = `Du har fått ett e-kort från ${from}:
 
-  const mailto = `mailto:?subject=${subject}&body=${body}`;
-  window.location.href = mailto;
-}
+${msg}
 
-    // Ladda kort direkt från URL + dölj resten
+Läs ditt kort här: ${link}`;
+      const body = encodeURIComponent(htmlBody);
+      const subject = encodeURIComponent(`E-kort från ${from}`);
+
+      const mailto = `mailto:?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+    }
+
     window.onload = () => {
       const params = new URLSearchParams(window.location.search);
       if (params.has('card')) {
