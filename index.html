@@ -32,7 +32,7 @@
   display: none;
   margin-top: 30px;
   padding: 0;
-  max-width: 500px;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
   background: white;
@@ -108,7 +108,7 @@
 }
 .main-swiper .swiper-slide img {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -145,6 +145,15 @@ input, textarea {
       display: none;
     }
       @media screen and (max-width: 600px) {
+      .swiper,
+      .main-swiper,
+      .thumbs,
+      #ecard-form,
+      #ecard-view {
+        max-width: 100% !important;
+        width: 90%;
+        margin: 0 auto;
+      }
       .actions {
         max-width: 90%;
       }
@@ -183,7 +192,7 @@ input, textarea {
 <body>
 
   <h1 style="margin-bottom: 10px;">Välj ett hälsningskort</h1>
-  <div class="swiper main-swiper" style="max-width: 500px; margin: 0 auto 20px;">
+  <div class="swiper main-swiper" style="max-width: 400px; margin: 0 auto 20px;">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
       <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')">
@@ -197,7 +206,7 @@ input, textarea {
   </div>
 </div>
 
-<div class="thumbs" style="width: 100%; max-width: 500px; margin: 0 auto 30px; display: flex; justify-content: space-between;">
+<div class="thumbs" style="width: 100%; max-width: 400px; margin: 0 auto 30px; display: flex; justify-content: space-between;">
   <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
   <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
   <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
@@ -224,7 +233,7 @@ input, textarea {
       </div>
     </div>
 
-<div id="ecard-form" style="background: white; padding: 30px; width: 100%; max-width: 500px; margin: 30px auto; display: none;">
+<div id="ecard-form" style="background: white; padding: 30px; width: 100%; max-width: 400px; margin: 30px auto; display: none;">
   <input type="text" id="fromName" placeholder="Från (ditt namn)" required oninput="updatePreview()"><br>
   <textarea id="customMsg" rows="4" placeholder="Ditt meddelande" oninput="updatePreview()"></textarea><br>
   <div class="actions">
@@ -264,6 +273,13 @@ input, textarea {
     bio: 'images/card2.jpg',
     friend: 'images/card3.jpg'
   };
+  document.getElementById('ecard-img').src = bgMap[cardKey];
+  document.getElementById('ecard-text').textContent = cardMap[cardKey].defaultMessage;
+  document.getElementById('ecard-view').style.display = 'block';
+  document.getElementById('ecard-form').style.display = 'block';
+  const slideIndex = cardKey === 'vitva' ? 0 : cardKey === 'bio' ? 1 : 2;
+  mainSwiper.slideTo(slideIndex);
+};
   document.getElementById('ecard-img').src = bgMap[cardKey];
   document.getElementById('ecard-text').textContent = cardMap[cardKey].defaultMessage;
   document.getElementById('ecard-view').style.display = 'block';
