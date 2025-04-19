@@ -106,9 +106,18 @@
   justify-content: center;
   align-items: center;
 }
-.swiper-slide img {
+.main-swiper .swiper-slide img {
   width: 100%;
-  max-width: 120px;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.thumbs-swiper .swiper-slide img {
+  width: 100%;
+  max-width: 100px;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -142,11 +151,19 @@ input, textarea {
 <body>
 
   <h1 style="margin-bottom: 10px;">Välj ett hälsningskort</h1>
-  <div class="swiper main-swiper" style="max-width: 400px; margin: 0 auto 20px;">
+  <div class="swiper main-swiper" style="max-width: 450px; margin: 0 auto 10px;">
   <div class="swiper-wrapper">
-    <div class="swiper-slide" onclick="selectCard('vitva')">
-      <img src="images/vitva.jpg" alt="VI TVÅ!">
+    <div class="swiper-slide">
+      <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')">
     </div>
+    <div class="swiper-slide">
+      <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')">
+    </div>
+    <div class="swiper-slide">
+      <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')">
+    </div>
+  </div>
+</div>
     <div class="swiper-slide" onclick="selectCard('bio')">
       <img src="images/bio.jpg" alt="BIO">
     </div>
@@ -165,11 +182,19 @@ input, textarea {
   </div>
 </div>
 
-<div class="swiper thumbs-swiper" style="max-width: 400px; margin: 10px auto 30px;">
+<div class="swiper thumbs-swiper" style="max-width: 450px; margin: 0 auto 30px;">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
       <img src="images/vitva.jpg" alt="VI TVÅ!">
     </div>
+    <div class="swiper-slide">
+      <img src="images/bio.jpg" alt="BIO">
+    </div>
+    <div class="swiper-slide">
+      <img src="images/friend.jpg" alt="FRIEND REQUEST">
+    </div>
+  </div>
+</div>
     <div class="swiper-slide">
       <img src="images/bio.jpg" alt="BIO">
     </div>
