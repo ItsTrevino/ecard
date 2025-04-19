@@ -2,9 +2,11 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
-  <title>Skicka ett e-kort</title>
+  <title>Hälsningskort</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <style>
     body {
+  overflow-x: hidden;
       font-family: sans-serif;
       text-align: center;
       padding: 30px;
@@ -93,7 +95,27 @@
       color: #0056b8;
       font-weight: bold;
     }
-    input, textarea {
+    .swiper {
+  width: 100%;
+  margin: 20px auto;
+  max-width: 600px;
+}
+.swiper-slide {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-slide img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+input, textarea {
       margin: 10px 0;
       padding: 10px;
       width: 80%;
@@ -119,12 +141,34 @@
 </head>
 <body>
 
-  <h1> </h1>
-  <div class="card-choice">
-    <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')">
-    <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')">
-    <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')">
+  <h1></h1>
+  <div class="swiper main-swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide" onclick="selectCard('vitva')">
+      <img src="images/vitva.jpg" alt="VI TVÅ!">
+    </div>
+    <div class="swiper-slide" onclick="selectCard('bio')">
+      <img src="images/bio.jpg" alt="BIO">
+    </div>
+    <div class="swiper-slide" onclick="selectCard('friend')">
+      <img src="images/friend.jpg" alt="FRIEND REQUEST">
+    </div>
   </div>
+</div>
+
+<div class="swiper thumbs-swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src="images/vitva.jpg" alt="VI TVÅ!">
+    </div>
+    <div class="swiper-slide">
+      <img src="images/bio.jpg" alt="BIO">
+    </div>
+    <div class="swiper-slide">
+      <img src="images/friend.jpg" alt="FRIEND REQUEST">
+    </div>
+  </div>
+</div>
 
   <div id="ecard-view">
     <div id="ecard-content" style="position: relative;">
@@ -156,6 +200,7 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script>
     let selectedCard = '';
     const cardMap = {
@@ -251,19 +296,33 @@ Läs ditt kort här: ${link}`;
   document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
 }
 
+// Swiper init
+const mainSwiper = new Swiper('.main-swiper', {
+  spaceBetween: 10,
+  thumbs: {
+    swiper: new Swiper('.thumbs-swiper', {
+      spaceBetween: 10,
+      slidesPerView: 3,
+      watchSlidesProgress: true,
+    })
+  },
+  on: {
+    click: function (swiper) {
+      const clickedIndex = swiper.clickedIndex;
+      if (clickedIndex === 0) selectCard('vitva');
+      if (clickedIndex === 1) selectCard('bio');
+      if (clickedIndex === 2) selectCard('friend');
+    }
+  }
+});
+
 window.onload = () => {
       const params = new URLSearchParams(window.location.search);
       if (params.has('card')) {
         selectedCard = params.get('card');
         const msg = decodeURIComponent(params.get('msg') || cardMap[selectedCard].defaultMessage);
         const from = decodeURIComponent(params.get('from') || '');
-        const bgMap = {
-  vitva: 'images/card1.jpg',
-  bio: 'images/card2.jpg',
-  friend: 'images/card3.jpg'
-};
-document.getElementById('ecard-img').src = bgMap[selectedCard];
-
+        document.getElementById('ecard-img').src = cardMap[selectedCard].img;
         document.getElementById('ecard-text').textContent = cardMap[selectedCard].defaultMessage;
         document.getElementById('ecard-custom').textContent = msg;
         document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
