@@ -133,27 +133,22 @@
       </div>
       <div class="ecard-right">
         <div>
-          <h1 id="ecard-text"></h1>
-          <p class="ecard-message" id="ecard-custom"></p>
-          <p class="ecard-from" id="ecard-from"></p>
+          <h1 id="ecard-text" style="color: white;"></h1>
+          <p class="ecard-message" id="ecard-custom" style="color: #0056b8;"></p>
+          <p class="ecard-from" id="ecard-from" style="color: #0056b8;"></p>
         </div>
         <div class="ecard-trailer">
-          <img src="images/trailer-still.jpg" alt="Trailer">
-          <img src="images/qrkod.png" alt="QR-kod för trailer" style="width: 48%;">
+          <a href="https://www.youtube.com/watch?v=79cf3-XrXV8" target="_blank">
+            <img src="images/trailer-still.jpg" alt="Trailer" style="margin-bottom: 15px;">
+          </a>
+          <a href="https://www.youtube.com/watch?v=79cf3-XrXV8" target="_blank">
+            <img src="images/qrkod.png" alt="QR-kod för trailer" style="height: 100px; width: auto; margin-bottom: 15px;">
+          </a>
         </div>
       </div>
     </div>
 
-    <form id="ecard-form" onsubmit="handleSubmit(event)">
-      <input type="text" id="fromName" placeholder="Från (ditt namn)" required><br>
-      <textarea id="customMsg" rows="4" placeholder="Ditt meddelande"></textarea><br>
-      <div class="actions">
-        <img src="images/download.png" alt="Ladda ner" onclick="downloadCard()">
-        <img src="images/copylink.png" alt="Kopiera länk" onclick="copyLink()">
-        <img src="images/sharefb.png" alt="Dela på Facebook" onclick="shareFacebook()">
-        <img src="images/email.png" alt="Skicka via e-post" onclick="sendViaEmail()">
-      </div>
-    </form>
+    
     <div id="confirmation" class="confirmation"></div>
   </div>
 
