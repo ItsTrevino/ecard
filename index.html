@@ -141,18 +141,14 @@ input, textarea {
 </head>
 <body>
 
-  <h1 style="margin-bottom: 10px;"></h1>
+  <h1 style="margin-bottom: 10px;">Välj ett hälsningskort</h1>
   <div class="swiper main-swiper" style="max-width: 400px; margin: 0 auto 20px;">
   <div class="swiper-wrapper">
     <div class="swiper-slide" onclick="selectCard('vitva')">
       <img src="images/vitva.jpg" alt="VI TVÅ!">
     </div>
-    <div class="swiper-slide" onclick="selectCard('bio')">
-      <img src="images/bio.jpg" alt="BIO">
-    </div>
-    <div class="swiper-slide" onclick="selectCard('friend')">
-      <img src="images/friend.jpg" alt="FRIEND REQUEST">
-    </div>
+    
+    
   </div>
 </div>
     <div class="swiper-slide" onclick="selectCard('bio')">
@@ -169,12 +165,8 @@ input, textarea {
     <div class="swiper-slide">
       <img src="images/vitva.jpg" alt="VI TVÅ!">
     </div>
-    <div class="swiper-slide">
-      <img src="images/bio.jpg" alt="BIO">
-    </div>
-    <div class="swiper-slide">
-      <img src="images/friend.jpg" alt="FRIEND REQUEST">
-    </div>
+    
+    
   </div>
 </div>
     <div class="swiper-slide">
@@ -251,7 +243,7 @@ document.getElementById('ecard-form').style.display = 'block';
       event.preventDefault();
       const from = document.getElementById('fromName').value;
       const msg = document.getElementById('customMsg').value;
-      document.getElementById('ecard-custom').textContent = msg ? `"${msg}"` : '';
+      document.getElementById('ecard-custom').textContent = msg || '';
       document.getElementById('ecard-from').textContent = `Från: ${from}`;
       document.getElementById('confirmation').textContent = 'Kortet är redo att delas!';
     }
