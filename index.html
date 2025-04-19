@@ -147,9 +147,14 @@ input, textarea {
     <div class="swiper-slide" onclick="selectCard('vitva')">
       <img src="images/vitva.jpg" alt="VI TVÅ!">
     </div>
-    
-    
+    <div class="swiper-slide" onclick="selectCard('bio')">
+      <img src="images/bio.jpg" alt="BIO">
+    </div>
+    <div class="swiper-slide" onclick="selectCard('friend')">
+      <img src="images/friend.jpg" alt="FRIEND REQUEST">
+    </div>
   </div>
+</div>
 </div>
     <div class="swiper-slide" onclick="selectCard('bio')">
       <img src="images/bio.jpg" alt="BIO">
@@ -165,9 +170,14 @@ input, textarea {
     <div class="swiper-slide">
       <img src="images/vitva.jpg" alt="VI TVÅ!">
     </div>
-    
-    
+    <div class="swiper-slide">
+      <img src="images/bio.jpg" alt="BIO">
+    </div>
+    <div class="swiper-slide">
+      <img src="images/friend.jpg" alt="FRIEND REQUEST">
+    </div>
   </div>
+</div>
 </div>
     <div class="swiper-slide">
       <img src="images/bio.jpg" alt="BIO">
@@ -300,7 +310,7 @@ Läs ditt kort här: ${link}`;
     function updatePreview() {
   const from = document.getElementById('fromName').value;
   const msg = document.getElementById('customMsg').value;
-  document.getElementById('ecard-custom').textContent = msg ? `"${msg}"` : '';
+  document.getElementById('ecard-custom').textContent = msg || '';
   document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
 }
 
