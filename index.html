@@ -278,7 +278,9 @@ input, textarea {
   document.getElementById('ecard-view').style.display = 'block';
   document.getElementById('ecard-form').style.display = 'block';
   const slideIndex = cardKey === 'vitva' ? 0 : cardKey === 'bio' ? 1 : 2;
-  mainSwiper.slideTo(slideIndex);
+  if (typeof mainSwiper !== 'undefined') {
+    mainSwiper.slideTo(slideIndex);
+  }
 }
 
     function handleSubmit(event) {
@@ -349,20 +351,15 @@ Läs ditt kort här: ${link}`;
 // Swiper init
 const mainSwiper = new Swiper('.main-swiper', {
   spaceBetween: 10,
-  thumbs: {
-    swiper: new Swiper('.thumbs', {
-      spaceBetween: 10,
-      slidesPerView: 3,
-      watchSlidesProgress: true,
-    })
-  },
+  
   on: {
-    click: function (swiper) {
-      const clickedIndex = swiper.clickedIndex;
-      if (clickedIndex === 0) selectCard('vitva');
-      if (clickedIndex === 1) selectCard('bio');
-      if (clickedIndex === 2) selectCard('friend');
+    slideChange: function () {
+      const index = this.activeIndex;
+      if (index === 0) selectCard('vitva');
+      if (index === 1) selectCard('bio');
+      if (index === 2) selectCard('friend');
     }
+  }
   }
 });
 
@@ -384,7 +381,7 @@ document.getElementById('ecard-img').src = bgMap[selectedCard];
         document.getElementById('ecard-view').style.display = 'block';
         document.getElementById('ecard-form').style.display = 'none';
         document.querySelector('.main-swiper').style.display = 'none';
-document.querySelector('.thumbs-swiper').style.display = 'none';
+document.querySelector('.thumbs').style.display = 'none';
       }
     }
   </script>
