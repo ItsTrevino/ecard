@@ -191,7 +191,7 @@ input, textarea {
 </head>
 <body>
 
-  <h1 style="margin-bottom: 10px;">Välj ett hälsningskort</h1>
+  <h1 style="margin-bottom: 10px;"></h1>
   <div class="swiper main-swiper" style="max-width: 400px; margin: 0 auto 20px;">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
@@ -266,7 +266,7 @@ input, textarea {
       }
     };
 
-    function selectCard(cardKey) {
+    function selectCard(cardKey, shouldSlide = true) {
   selectedCard = cardKey;
   const bgMap = {
     vitva: 'images/card1.jpg',
@@ -277,10 +277,11 @@ input, textarea {
   document.getElementById('ecard-text').textContent = cardMap[cardKey].defaultMessage;
   document.getElementById('ecard-view').style.display = 'block';
   document.getElementById('ecard-form').style.display = 'block';
-  const slideIndex = cardKey === 'vitva' ? 0 : cardKey === 'bio' ? 1 : 2;
-  if (typeof mainSwiper !== 'undefined') {
+  if (shouldSlide && typeof mainSwiper !== 'undefined') {
+    const slideIndex = cardKey === 'vitva' ? 0 : cardKey === 'bio' ? 1 : 2;
     mainSwiper.slideTo(slideIndex);
   }
+}
 }
 
     function handleSubmit(event) {
@@ -355,9 +356,9 @@ const mainSwiper = new Swiper('.main-swiper', {
   on: {
     slideChange: function () {
       const index = this.activeIndex;
-      if (index === 0) selectCard('vitva');
-      if (index === 1) selectCard('bio');
-      if (index === 2) selectCard('friend');
+      if (index === 0) selectCard('vitva', false);
+      if (index === 1) selectCard('bio', false);
+      if (index === 2) selectCard('friend', false);
     }
   }
   }
