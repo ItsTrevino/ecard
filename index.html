@@ -32,10 +32,10 @@
   display: none;
   margin-top: 30px;
   padding: 0;
-  max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      background: white;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
     }
     #ecard-content {
       display: flex;
@@ -107,8 +107,8 @@
   align-items: center;
 }
 .swiper-slide img {
-  width: 150px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 120px;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -141,8 +141,8 @@ input, textarea {
 </head>
 <body>
 
-  <h1></h1>
-  <div class="swiper main-swiper">
+  <h1 style="margin-bottom: 10px;"></h1>
+  <div class="swiper main-swiper" style="max-width: 400px; margin: 0 auto 20px;">
   <div class="swiper-wrapper">
     <div class="swiper-slide" onclick="selectCard('vitva')">
       <img src="images/vitva.jpg" alt="VI TVÅ!">
@@ -155,12 +155,28 @@ input, textarea {
     </div>
   </div>
 </div>
+    <div class="swiper-slide" onclick="selectCard('bio')">
+      <img src="images/bio.jpg" alt="BIO">
+    </div>
+    <div class="swiper-slide" onclick="selectCard('friend')">
+      <img src="images/friend.jpg" alt="FRIEND REQUEST">
+    </div>
+  </div>
+</div>
 
-<div class="swiper thumbs-swiper">
+<div class="swiper thumbs-swiper" style="max-width: 400px; margin: 10px auto 30px;">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
       <img src="images/vitva.jpg" alt="VI TVÅ!">
     </div>
+    <div class="swiper-slide">
+      <img src="images/bio.jpg" alt="BIO">
+    </div>
+    <div class="swiper-slide">
+      <img src="images/friend.jpg" alt="FRIEND REQUEST">
+    </div>
+  </div>
+</div>
     <div class="swiper-slide">
       <img src="images/bio.jpg" alt="BIO">
     </div>
