@@ -279,11 +279,6 @@ input, textarea {
   document.getElementById('ecard-form').style.display = 'block';
   const slideIndex = cardKey === 'vitva' ? 0 : cardKey === 'bio' ? 1 : 2;
   mainSwiper.slideTo(slideIndex);
-};
-  document.getElementById('ecard-img').src = bgMap[cardKey];
-  document.getElementById('ecard-text').textContent = cardMap[cardKey].defaultMessage;
-  document.getElementById('ecard-view').style.display = 'block';
-document.getElementById('ecard-form').style.display = 'block';
 }
 
     function handleSubmit(event) {
