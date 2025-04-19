@@ -19,20 +19,20 @@
       flex-wrap: wrap;
     }
     .card-choice img {
-      width: 200px;
-      cursor: pointer;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.2s;
-    }
+  width: 150px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
     .card-choice img:hover {
       transform: scale(1.05);
     }
     #ecard-view {
-      display: none;
-      margin-top: 30px;
-      padding: 0;
-      max-width: 900px;
+  display: none;
+  margin-top: 30px;
+  padding: 0;
+  max-width: 600px;
       margin-left: auto;
       margin-right: auto;
       background: white;
@@ -107,7 +107,7 @@
   align-items: center;
 }
 .swiper-slide img {
-  width: 100%;
+  width: 150px;
   max-width: 100%;
   height: auto;
   border-radius: 10px;
@@ -322,13 +322,19 @@ window.onload = () => {
         selectedCard = params.get('card');
         const msg = decodeURIComponent(params.get('msg') || cardMap[selectedCard].defaultMessage);
         const from = decodeURIComponent(params.get('from') || '');
-        document.getElementById('ecard-img').src = cardMap[selectedCard].img;
+        const bgMap = {
+  vitva: 'images/card1.jpg',
+  bio: 'images/card2.jpg',
+  friend: 'images/card3.jpg'
+};
+document.getElementById('ecard-img').src = bgMap[selectedCard];
         document.getElementById('ecard-text').textContent = cardMap[selectedCard].defaultMessage;
         document.getElementById('ecard-custom').textContent = msg;
         document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
         document.getElementById('ecard-view').style.display = 'block';
         document.getElementById('ecard-form').style.display = 'none';
-        document.querySelector('.card-choice').style.display = 'none';
+        document.querySelector('.main-swiper').style.display = 'none';
+document.querySelector('.thumbs-swiper').style.display = 'none';
       }
     }
   </script>
