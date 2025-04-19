@@ -133,11 +133,18 @@ input, textarea {
     .actions {
       margin-top: 20px;
     }
-    .actions img {
-      width: 60px;
-      cursor: pointer;
-      margin: 10px;
-    }
+    .actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 75%;
+  margin: 20px auto 0;
+}
+.actions img {
+  width: 60px;
+  cursor: pointer;
+}
     .confirmation {
       margin-top: 20px;
       font-weight: bold;
@@ -151,11 +158,19 @@ input, textarea {
 <body>
 
   <h1 style="margin-bottom: 10px;">Välj ett hälsningskort</h1>
-  <div class="swiper main-swiper" style="max-width: 450px; margin: 0 auto 10px;">
+  <div class="swiper main-swiper" style="max-width: 500px; margin: 0 auto 20px;">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
       <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')">
     </div>
+    <div class="swiper-slide">
+      <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')">
+    </div>
+    <div class="swiper-slide">
+      <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')">
+    </div>
+  </div>
+</div>
     <div class="swiper-slide">
       <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')">
     </div>
@@ -182,11 +197,17 @@ input, textarea {
   </div>
 </div>
 
-<div class="swiper thumbs-swiper" style="max-width: 450px; margin: 0 auto 30px;">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="images/vitva.jpg" alt="VI TVÅ!">
-    </div>
+<div class="swiper thumbs-swiper" style="max-width: 500px; margin: 0 auto 30px; display: flex; justify-content: space-between;">
+  <div class="swiper-slide">
+    <img src="images/vitva.jpg" alt="VI TVÅ!">
+  </div>
+  <div class="swiper-slide">
+    <img src="images/bio.jpg" alt="BIO">
+  </div>
+  <div class="swiper-slide">
+    <img src="images/friend.jpg" alt="FRIEND REQUEST">
+  </div>
+</div>
     <div class="swiper-slide">
       <img src="images/bio.jpg" alt="BIO">
     </div>
@@ -228,7 +249,7 @@ input, textarea {
       </div>
     </div>
 
-<div id="ecard-form" style="background: white; padding: 30px; max-width: 600px; margin: 30px auto; display: none;">
+<div id="ecard-form" style="background: white; padding: 30px; max-width: 500px; margin: 30px auto; display: none;">
   <input type="text" id="fromName" placeholder="Från (ditt namn)" required oninput="updatePreview()"><br>
   <textarea id="customMsg" rows="4" placeholder="Ditt meddelande" oninput="updatePreview()"></textarea><br>
   <div class="actions">
