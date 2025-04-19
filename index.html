@@ -28,6 +28,12 @@
     #ecard-view {
       display: none;
       margin-top: 30px;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
     }
     #ecard-content {
       display: flex;
@@ -37,7 +43,7 @@
       border: 1px solid #ccc;
       padding: 0;
       margin: 0 auto;
-      width: 600px;
+      width: 100%;
       background: #fff;
     }
     .ecard-left {
@@ -79,11 +85,22 @@
       font-weight: bold;
       color: green;
     }
+    #trailer {
+      display: none;
+      margin-top: 30px;
+      background: #000;
+      color: white;
+      padding: 20px;
+    }
+    #trailer a {
+      color: #fff;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Kort</h1>
+  <h1>Välj ett e-kort</h1>
   <div class="card-choice">
     <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')">
     <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')">
@@ -113,14 +130,12 @@
       </div>
     </form>
     <div id="confirmation" class="confirmation"></div>
-  </div>
 
-  <div id="trailer" style="display: none; margin-top: 30px;">
-    <h3>Se trailern till filmen:</h3>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/79cf3-XrXV8" 
-      title="YouTube video player" frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen></iframe>
+    <div id="trailer">
+      <h3>🎬 Se trailern till filmen:</h3>
+      <p>Sök efter “Bob Trevino Likes It” på YouTube eller klicka här:</p>
+      <a href="https://www.youtube.com/watch?v=79cf3-XrXV8" target="_blank">youtube.com/watch?v=79cf3-XrXV8</a>
+    </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -158,7 +173,7 @@
     }
 
     function downloadCard() {
-      html2canvas(document.getElementById('ecard-content')).then(canvas => {
+      html2canvas(document.getElementById('ecard-view')).then(canvas => {
         const link = document.createElement('a');
         link.download = 'ecard.png';
         link.href = canvas.toDataURL();
