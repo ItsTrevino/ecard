@@ -32,7 +32,7 @@
   display: none;
   margin-top: 30px;
   padding: 0;
-  max-width: 800px;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
   background: white;
@@ -108,21 +108,14 @@
 }
 .main-swiper .swiper-slide img {
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   cursor: pointer;
 }
 
-.thumbs-swiper .swiper-slide img {
-  width: 100%;
-  max-width: 100px;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  cursor: pointer;
-}
+
 
 input, textarea {
       margin: 10px 0;
@@ -131,13 +124,11 @@ input, textarea {
       max-width: 400px;
     }
     .actions {
-      margin-top: 20px;
-    }
-    .actions {
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  width: 100%;
   max-width: 75%;
   margin: 20px auto 0;
 }
@@ -154,6 +145,9 @@ input, textarea {
       display: none;
     }
       @media screen and (max-width: 600px) {
+      .actions {
+        max-width: 90%;
+      }
       .swiper,
       .main-swiper,
       .thumbs,
@@ -203,7 +197,7 @@ input, textarea {
   </div>
 </div>
 
-<div class="thumbs" style="max-width: 500px; margin: 0 auto 30px; display: flex; justify-content: space-between;">
+<div class="thumbs" style="width: 100%; max-width: 500px; margin: 0 auto 30px; display: flex; justify-content: space-between;">
   <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
   <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
   <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
@@ -230,7 +224,7 @@ input, textarea {
       </div>
     </div>
 
-<div id="ecard-form" style="background: white; padding: 30px; max-width: 500px; margin: 30px auto; display: none;">
+<div id="ecard-form" style="background: white; padding: 30px; width: 100%; max-width: 500px; margin: 30px auto; display: none;">
   <input type="text" id="fromName" placeholder="Från (ditt namn)" required oninput="updatePreview()"><br>
   <textarea id="customMsg" rows="4" placeholder="Ditt meddelande" oninput="updatePreview()"></textarea><br>
   <div class="actions">
@@ -345,7 +339,7 @@ Läs ditt kort här: ${link}`;
 const mainSwiper = new Swiper('.main-swiper', {
   spaceBetween: 10,
   thumbs: {
-    swiper: new Swiper('.thumbs-swiper', {
+    swiper: new Swiper('.thumbs', {
       spaceBetween: 10,
       slidesPerView: 3,
       watchSlidesProgress: true,
