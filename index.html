@@ -148,8 +148,18 @@
       </div>
     </div>
 
-    
-    <div id="confirmation" class="confirmation"></div>
+<div id="ecard-form" style="background: white; padding: 30px 0;">
+  <input type="text" id="fromName" placeholder="Från (ditt namn)" required oninput="updatePreview()"><br>
+  <textarea id="customMsg" rows="4" placeholder="Ditt meddelande" oninput="updatePreview()"></textarea><br>
+  <div class="actions">
+    <img src="images/download.png" alt="Ladda ner" onclick="downloadCard()">
+    <img src="images/copylink.png" alt="Kopiera länk" onclick="copyLink()">
+    <img src="images/sharefb.png" alt="Dela på Facebook" onclick="shareFacebook()">
+    <img src="images/email.png" alt="Skicka via e-post" onclick="sendViaEmail()">
+  </div>
+</div>
+
+<div id="confirmation" class="confirmation"></div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -231,7 +241,14 @@ Läs ditt kort här: ${link}`;
       window.location.href = mailto;
     }
 
-    window.onload = () => {
+    function updatePreview() {
+  const from = document.getElementById('fromName').value;
+  const msg = document.getElementById('customMsg').value;
+  document.getElementById('ecard-custom').textContent = msg ? `"${msg}"` : '';
+  document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
+}
+
+window.onload = () => {
       const params = new URLSearchParams(window.location.search);
       if (params.has('card')) {
         selectedCard = params.get('card');
