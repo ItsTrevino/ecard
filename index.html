@@ -257,7 +257,13 @@ window.onload = () => {
         selectedCard = params.get('card');
         const msg = decodeURIComponent(params.get('msg') || cardMap[selectedCard].defaultMessage);
         const from = decodeURIComponent(params.get('from') || '');
-        document.getElementById('ecard-img').src = cardMap[selectedCard].img;
+        const bgMap = {
+  vitva: 'images/card1.jpg',
+  bio: 'images/card2.jpg',
+  friend: 'images/card3.jpg'
+};
+document.getElementById('ecard-img').src = bgMap[selectedCard];
+
         document.getElementById('ecard-text').textContent = cardMap[selectedCard].defaultMessage;
         document.getElementById('ecard-custom').textContent = msg;
         document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
