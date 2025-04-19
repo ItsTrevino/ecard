@@ -67,7 +67,7 @@
       margin-bottom: 20px;
     }
     .ecard-message {
-      font-style: italic;
+      font-style: normal; font-weight: bold;
       margin: 20px 0;
     }
     .ecard-from {
@@ -137,14 +137,14 @@
           <p class="ecard-message" id="ecard-custom" style="color: #0056b8;"></p>
           <p class="ecard-from" id="ecard-from" style="color: #0056b8;"></p>
         </div>
-        <div class="ecard-trailer">
-          <a href="https://www.youtube.com/watch?v=79cf3-XrXV8" target="_blank">
-            <img src="images/trailer-still.jpg" alt="Trailer" style="margin-bottom: 15px;">
-          </a>
-          <a href="https://www.youtube.com/watch?v=79cf3-XrXV8" target="_blank">
-            <img src="images/qrkod.png" alt="QR-kod för trailer" style="height: 100px; width: auto; margin-bottom: 15px;">
-          </a>
-        </div>
+        <div class="ecard-trailer" style="justify-content: center; gap: 20px; align-items: flex-end;">
+  <a href="https://www.youtube.com/watch?v=79cf3-XrXV8" target="_blank">
+    <img src="images/trailer-still.jpg" alt="Trailer" style="margin-bottom: 15px; height: 100px;">
+  </a>
+  <a href="https://www.youtube.com/watch?v=79cf3-XrXV8" target="_blank">
+    <img src="images/qrkod.png" alt="QR-kod för trailer" style="height: 100px; width: auto; margin-bottom: 15px;">
+  </a>
+</div>
       </div>
     </div>
 
@@ -197,12 +197,16 @@
     }
 
     function downloadCard() {
-      html2canvas(document.getElementById('ecard-view')).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'ecard.png';
-        link.href = canvas.toDataURL();
-        link.click();
-      });
+  const form = document.getElementById('ecard-form');
+  form.style.display = 'none';
+  html2canvas(document.getElementById('ecard-content')).then(canvas => {
+    const link = document.createElement('a');
+    link.download = 'ecard.png';
+    link.href = canvas.toDataURL();
+    link.click();
+    form.style.display = 'block';
+  });
+}
     }
 
     function copyLink() {
