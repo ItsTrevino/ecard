@@ -129,7 +129,7 @@
   <div id="ecard-view">
     <div id="ecard-content" style="position: relative;">
   <img id="ecard-img" src="" alt="Bakgrund med e-kort" style="width: 100%; display: block;">
-  <div style="position: absolute; top: 30%; left: 50%; width: 45%; transform: translateX(-50%); text-align: left; padding: 20px; color: #0056b8;">
+  <div style="position: absolute; top: 30%; left: 55%; width: 40%; text-align: left; padding: 20px; color: #0056b8;">
     <h1 id="ecard-text" style="color: white;"></h1>
     <p class="ecard-message" id="ecard-custom" style="color: #0056b8; font-weight: bold;"></p>
     <p class="ecard-from" id="ecard-from" style="color: #0056b8; font-weight: bold;"></p>
@@ -141,7 +141,7 @@
       </div>
     </div>
 
-<div id="ecard-form" style="background: white; padding: 30px 0;">
+<div id="ecard-form" style="background: white; padding: 30px; max-width: 600px; margin: 30px auto; display: none;">
   <input type="text" id="fromName" placeholder="Från (ditt namn)" required oninput="updatePreview()"><br>
   <textarea id="customMsg" rows="4" placeholder="Ditt meddelande" oninput="updatePreview()"></textarea><br>
   <div class="actions">
@@ -183,6 +183,7 @@
   document.getElementById('ecard-img').src = bgMap[cardKey];
   document.getElementById('ecard-text').textContent = cardMap[cardKey].defaultMessage;
   document.getElementById('ecard-view').style.display = 'block';
+document.getElementById('ecard-form').style.display = 'block';
 }
 
     function handleSubmit(event) {
