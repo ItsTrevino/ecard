@@ -12,6 +12,8 @@
       padding: 30px;
       background: #fcd024;
     }
+
+    /* Kortval */
     .card-choice {
       display: flex;
       justify-content: center;
@@ -29,6 +31,7 @@
       transform: scale(1.05);
     }
 
+    /* Förhandsvisning */
     #ecard-view {
       display: none;
       margin-top: 30px;
@@ -36,8 +39,8 @@
       width: 100%;
       margin-left: auto;
       margin-right: auto;
-      background: transparent;
-      max-width: none;
+      background: white;
+      max-width: 400px; /* Förhandsvisning ska vara max 400px bred */
     }
 
     #ecard-content {
@@ -109,78 +112,16 @@
       font-weight: bold;
     }
 
-    .swiper {
-      width: 100%;
-      margin: 20px auto;
-      max-width: 600px;
-    }
-
-    .swiper-slide {
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .main-swiper .swiper-slide img {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      cursor: pointer;
-    }
-
-    input, textarea {
-      margin: 10px 0;
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 75%;
-      margin: 20px auto 0;
-    }
-
-    .actions img {
-      width: 60px;
-      cursor: pointer;
-    }
-
-    .confirmation {
-      margin-top: 20px;
-      font-weight: bold;
-      color: green;
-    }
-
-    #trailer {
-      display: none;
-    }
-
-    /* Specifika justeringar för delningskortet */
+    /* För delningskortet */
     #ecard-view-sharing {
-      width: 100% !important; /* Ta upp hela bredden */
-      max-width: 1500px !important; /* Maximalt 1500px brett */
+      width: 100% !important;
+      max-width: 1500px !important; /* Maxbredd för delningskortet */
       padding: 30px;
       background: transparent;
-      box-sizing: border-box;
       margin: 0 auto;
+      box-sizing: border-box;
     }
 
-    /* Förhandsvisningsbilden ska ha maxbredd 400px */
-    #ecard-img {
-      width: 100%;
-      max-width: 400px; /* Samma bredd som övriga element */
-      height: auto;
-    }
-
-    /* Textjustering för delningskortet */
     #ecard-view-sharing #ecard-text {
       font-size: 36px !important;
     }
@@ -193,9 +134,16 @@
       font-size: 24px !important;
     }
 
-    /* Anpassa textstorleken på delningskortet baserat på kortets bredd */
+    /* Anpassa textstorleken beroende på delningskortets storlek */
     #ecard-view-sharing {
       font-size: 22px;  /* Standardtextstorlek */
+    }
+
+    /* Förhandsvisningsbilden ska ha maxbredd 400px */
+    #ecard-img {
+      width: 100%;
+      max-width: 400px; /* Förhandsvisningsbilden matchar andra element */
+      height: auto;
     }
 
     /* Responsiva anpassningar */
