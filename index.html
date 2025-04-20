@@ -189,10 +189,16 @@
       }
     }
 
-    /* För iframe-vy */
-    iframe .thumbs {
-      gap: 5px;  /* Minska avståndet mellan bilderna i iframe */
-    }
+   /* För iframe-vy - SPECIFIKT FÖR THUMBNAILS */
+iframe .thumbs {
+  gap: 5px;  /* Minska avståndet mellan bilderna i iframe */
+  margin: 0 auto; /* Centrera bilderna */
+}
+
+iframe .thumbs img {
+  max-width: 70px;  /* Minska storleken på thumbnailsen i iframe */
+  width: 70px;      /* Sätt en fast bredd för att säkerställa att alla bilder är lika stora */
+}
 
     /* För delningslänken */
     #ecard-view-sharing {
