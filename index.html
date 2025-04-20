@@ -184,10 +184,112 @@ input, textarea {
   justify-content: center;
   gap: 10px;
 }
-      .thumbs img {
-        max-width: 50px;  /* Minskar storleken på thumbnailsen i mobilvy */
-      }
+        /* Endast när delningslänken visas */
+#ecard-view-sharing {
+  font-size: 18px; /* Öka textstorleken för hela kortet */
+}
+
+#ecard-view-sharing #ecard-text {
+  font-size: 24px; /* Öka storleken på rubriken */
+}
+
+#ecard-view-sharing #ecard-custom {
+  font-size: 16px; /* Större text för meddelandet */
+}
+
+#ecard-view-sharing #ecard-from {
+  font-size: 14px; /* Större text för avsändarens namn */
+}
+
+/* För mobilvyn, specifikt för delningskortet */
+@media screen and (max-width: 600px) {
+    /* Allmänna anpassningar för mobil */
+    .swiper,
+    .main-swiper,
+    .thumbs,
+    #ecard-form,
+    #ecard-view {
+        max-width: 100% !important;
+        width: 90%;
+        margin: 0 auto;
     }
+
+    .actions {
+        max-width: 90%;
+    }
+
+    .ecard-right {
+        padding: 20px 10px;
+        font-size: 16px;
+    }
+
+    .ecard-trailer img {
+        width: 100%;
+    }
+
+    .actions img {
+        width: 50px;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+    }
+
+    /* För thumbs (små bilder under kortet) */
+    .thumbs {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .thumbs img {
+        max-width: 50px; /* Minskar storleken på thumbnailsen i mobilvy */
+    }
+
+    /* Endast när delningslänken visas */
+    #ecard-view-sharing {
+        font-size: 18px; /* Öka textstorleken för hela kortet */
+    }
+
+    #ecard-view-sharing #ecard-text {
+        font-size: 24px; /* Öka storleken på rubriken */
+    }
+
+    #ecard-view-sharing #ecard-custom {
+        font-size: 16px; /* Större text för meddelandet */
+    }
+
+    #ecard-view-sharing #ecard-from {
+        font-size: 14px; /* Större text för avsändarens namn */
+    }
+
+    /* För mobilvyn, specifikt för delningskortet */
+    #ecard-view-sharing {
+        max-width: 90% !important;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    #ecard-view-sharing #ecard-content {
+        max-width: 90% !important;
+        width: 100%;
+        margin: 0 auto;
+        font-size: 16px; /* Anpassa textstorleken på mobilen */
+    }
+
+    #ecard-view-sharing #ecard-text {
+        font-size: 20px; /* Anpassa rubrikstorleken på mobilen */
+    }
+
+    #ecard-view-sharing #ecard-custom {
+        font-size: 14px; /* Anpassa meddelandetexten på mobilen */
+    }
+
+    #ecard-view-sharing #ecard-from {
+        font-size: 12px; /* Anpassa avsändartexten på mobilen */
+    }
+}
   </style>
 </head>
 <body>
@@ -368,26 +470,29 @@ const mainSwiper = new Swiper('.main-swiper', {
 });
 
 window.onload = () => {
-      const params = new URLSearchParams(window.location.search);
-      if (params.has('card')) {
-        selectedCard = params.get('card');
-        const msg = decodeURIComponent(params.get('msg') || cardMap[selectedCard].defaultMessage);
-        const from = decodeURIComponent(params.get('from') || '');
-        const bgMap = {
-  vitva: 'images/card1.jpg',
-  bio: 'images/card2.jpg',
-  friend: 'images/card3.jpg'
-};
-document.getElementById('ecard-img').src = bgMap[selectedCard];
-        document.getElementById('ecard-text').textContent = cardMap[selectedCard].defaultMessage;
-        document.getElementById('ecard-custom').textContent = msg;
-        document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
-        document.getElementById('ecard-view').style.display = 'block';
-        document.getElementById('ecard-form').style.display = 'none';
-        document.querySelector('.main-swiper').style.display = 'none';
-document.querySelector('.thumbs').style.display = 'none';
-      }
-    }
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('card')) {
+    selectedCard = params.get('card');
+    const msg = decodeURIComponent(params.get('msg') || cardMap[selectedCard].defaultMessage);
+    const from = decodeURIComponent(params.get('from') || '');
+    const bgMap = {
+      vitva: 'images/card1.jpg',
+      bio: 'images/card2.jpg',
+      friend: 'images/card3.jpg'
+    };
+    document.getElementById('ecard-img').src = bgMap[selectedCard];
+    document.getElementById('ecard-text').textContent = cardMap[selectedCard].defaultMessage;
+    document.getElementById('ecard-custom').textContent = msg;
+    document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
+    document.getElementById('ecard-view').style.display = 'block';
+    document.getElementById('ecard-form').style.display = 'none';
+    document.querySelector('.main-swiper').style.display = 'none';
+    document.querySelector('.thumbs').style.display = 'none';
+
+    // Lägg till klassen för delningslänken så texten blir större
+    document.getElementById('ecard-view').classList.add('ecard-view-sharing');
+  }
+}
   </script>
 
 </body>
