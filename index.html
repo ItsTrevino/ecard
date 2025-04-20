@@ -191,21 +191,25 @@ input, textarea {
     width: 80px;      /* Sätt en fast bredd för att säkerställa att alla bilder är lika stora */
   }
 }
-        /* Endast när delningslänken visas */
+        /* För delningslänken */
 #ecard-view-sharing {
+  max-width: 800px; /* Öka max-bredden på kortet */
+  width: 100%; /* Se till att kortet tar upp hela tillgängliga bredden */
   font-size: 18px; /* Öka textstorleken för hela kortet */
+  padding: 20px; /* Lägg till padding för mer utrymme */
 }
 
+/* Anpassa textstorleken för rubriken och meddelandet */
 #ecard-view-sharing #ecard-text {
-  font-size: 24px; /* Öka storleken på rubriken */
+  font-size: 30px; /* Större rubriktext */
 }
 
 #ecard-view-sharing #ecard-custom {
-  font-size: 16px; /* Större text för meddelandet */
+  font-size: 22px; /* Större meddelandetext */
 }
 
 #ecard-view-sharing #ecard-from {
-  font-size: 14px; /* Större text för avsändarens namn */
+  font-size: 20px; /* Större text för avsändaren */
 }
 
 /* För mobilvyn, specifikt för delningskortet */
