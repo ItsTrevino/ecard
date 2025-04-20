@@ -174,25 +174,27 @@
       background: transparent;
       box-sizing: border-box;
       font-size: 22px; /* Anpassa textstorlek för delningskort */
+      margin: 0 auto; /* Centrera kortet */
     }
 
     /* Textjustering för delningskortet */
     #ecard-view-sharing #ecard-text {
-      font-size: 36px !important;
+      font-size: 5vw; /* Gör texten responsiv */
+      font-weight: bold;
     }
 
     #ecard-view-sharing #ecard-custom {
-      font-size: 28px !important;
+      font-size: 4vw; /* Justera meddelandetextens storlek */
     }
 
     #ecard-view-sharing #ecard-from {
-      font-size: 24px !important;
+      font-size: 3.5vw; /* Justera storleken på avsändartexten */
     }
 
     /* Anpassa layout för mindre skärmar */
     @media screen and (max-width: 600px) {
       #ecard-view-sharing {
-        width: 100% !important;  /* Fullbredd på mobiler */
+        width: 100% !important;
         max-width: 100% !important;
         padding: 20px !important;
       }
