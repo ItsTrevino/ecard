@@ -37,7 +37,7 @@
       margin-left: auto;
       margin-right: auto;
       background: transparent;
-      max-width: 100%; /* Gör så att vi inte har någon maxbredd för e-kortet */
+      max-width: none; /* Ingen maxbredd på förhandsvisningen */
     }
 
     #ecard-content {
@@ -54,7 +54,7 @@
 
     .ecard-left img {
       width: 100%;
-      height: 100%;
+      height: auto;
       object-fit: cover;
       display: block;
     }
@@ -166,18 +166,18 @@
     /* Specifika justeringar för delningskortet */
     #ecard-view-sharing {
       width: 100% !important;
-      max-width: 1500px !important; /* Maximalt 1500px brett */
+      max-width: 1500px !important;
       padding: 30px;
       background: transparent;
       box-sizing: border-box;
-      margin: 0 auto; /* Centrera kortet */
+      margin: 0 auto;
     }
 
-    /* Se till att bakgrundsbilden expanderar ordentligt */
+    /* Förhandsvisningsbilden ska inte vara för bred */
     #ecard-img {
       width: 100%;
+      max-width: 400px;  /* Samma bredd som övriga element */
       height: auto;
-      max-width: 1500px; /* Se till att bakgrundsbilden inte blir för liten */
     }
 
     #ecard-view-sharing #ecard-text {
@@ -192,7 +192,12 @@
       font-size: 24px !important;
     }
 
-    /* För att hantera texten i responsiv design */
+    /* Anpassa textstorleken på delningskortet baserat på kortets bredd */
+    #ecard-view-sharing {
+      font-size: 22px;  /* Standardtextstorlek */
+    }
+
+    /* Responsiva anpassningar */
     @media screen and (max-width: 600px) {
       #ecard-view-sharing {
         width: 100% !important;
@@ -217,7 +222,6 @@
 </head>
 <body>
 
-  <!-- Kortval och visning -->
   <h1 style="margin-bottom: 10px;"></h1>
   <div class="swiper main-swiper" style="max-width: 400px; margin: 0 auto 20px;">
     <div class="swiper-wrapper">
@@ -240,7 +244,7 @@
   </div>
 
   <div id="ecard-view">
-    <div id="ecard-content" style="position: relative; margin: 0 auto; max-width: 1500px;">
+    <div id="ecard-content" style="position: relative; margin: 0 auto; max-width: 400px;">
       <img id="ecard-img" src="" alt="Bakgrund med e-kort">
       <div style="position: absolute; top: 10%; left: 54%; width: 35%; text-align: left; padding: 15px; color: #0056b8;">
         <h1 id="ecard-text" style="color: white;"></h1>
