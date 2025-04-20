@@ -108,66 +108,10 @@
       font-weight: bold;
     }
 
-    /* Anpassningar för swiper och bilder */
-    .swiper {
-      width: 100%;
-      margin: 20px auto;
-      max-width: 600px;
-    }
-
-    .swiper-slide {
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .main-swiper .swiper-slide img {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      cursor: pointer;
-    }
-
-    /* För knappar och inputs */
-    input, textarea {
-      margin: 10px 0;
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 75%;
-      margin: 20px auto 0;
-    }
-
-    .actions img {
-      width: 60px;
-      cursor: pointer;
-    }
-
-    .confirmation {
-      margin-top: 20px;
-      font-weight: bold;
-      color: green;
-    }
-
-    #trailer {
-      display: none;
-    }
-
     /* Specifika justeringar för delningskortet */
     #ecard-view-sharing {
-      width: 100% !important; /* Full bredd */
-      max-width: 1500px !important; /* Maximalt 1500px */
+      width: 100% !important;
+      max-width: 1500px !important; /* Maximalt 1500px brett */
       padding: 30px;
       background: transparent;
       box-sizing: border-box;
@@ -184,6 +128,13 @@
 
     #ecard-view-sharing #ecard-from {
       font-size: 24px !important; /* Större avsändartext */
+    }
+
+    /* För att säkerställa att bilden inte blir för liten */
+    #ecard-img {
+      width: 100%;
+      height: auto;
+      max-width: 1500px; /* Se till att bakgrundsbilden inte är större än 1500px */
     }
 
     /* För mobil */
@@ -206,7 +157,6 @@
         font-size: 18px;
       }
     }
-
   </style>
 </head>
 <body>
@@ -235,7 +185,7 @@
 
   <div id="ecard-view">
     <div id="ecard-content" style="position: relative; margin: 0 auto; max-width: 400px;">
-      <img id="ecard-img" src="" alt="Bakgrund med e-kort" style="width: 100%; height: auto; display: block; margin: 0 auto;">
+      <img id="ecard-img" src="" alt="Bakgrund med e-kort">
       <div style="position: absolute; top: 10%; left: 54%; width: 35%; text-align: left; padding: 15px; color: #0056b8;">
         <h1 id="ecard-text" style="color: white;"></h1>
         <p class="ecard-message" id="ecard-custom" style="color: #0056b8; font-weight: bold;"></p>
@@ -299,6 +249,15 @@
       }
     }
 
+    function handleSubmit(event) {
+      event.preventDefault();
+      const from = document.getElementById('fromName').value;
+      const msg = document.getElementById('customMsg').value;
+      document.getElementById('ecard-custom').textContent = msg || '';
+      document.getElementById('ecard-from').textContent = `Från: ${from}`;
+      document.getElementById('confirmation').textContent = 'Kortet är redo att delas!';
+    }
+
     function downloadCard() {
       const form = document.getElementById('ecard-form');
       form.style.display = 'none';
@@ -335,11 +294,7 @@
       const fromEncoded = encodeURIComponent(from);
       const link = `${window.location.origin}${window.location.pathname}?card=${selectedCard}&msg=${msgEncoded}&from=${fromEncoded}`;
 
-      const htmlBody = `Du har fått ett e-kort från ${from}:
-
-${msg}
-
-Läs ditt kort här: ${link}`;
+      const htmlBody = `Du har fått ett e-kort från ${from}:\n\n${msg}\n\nLäs ditt kort här: ${link}`;
       const body = encodeURIComponent(htmlBody);
       const subject = encodeURIComponent(`E-kort från ${from}`);
 
@@ -354,7 +309,6 @@ Läs ditt kort här: ${link}`;
       document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
     }
 
-    // Swiper init
     const mainSwiper = new Swiper('.main-swiper', {
       spaceBetween: 10,
       on: {
@@ -386,11 +340,9 @@ Läs ditt kort här: ${link}`;
         document.getElementById('ecard-form').style.display = 'none';
         document.querySelector('.main-swiper').style.display = 'none';
         document.querySelector('.thumbs').style.display = 'none';
-
-        // Lägg till klassen för delningslänken så texten blir större
         document.getElementById('ecard-view').classList.add('ecard-view-sharing');
       }
-    }
+    };
   </script>
 
 </body>
