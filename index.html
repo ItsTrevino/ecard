@@ -193,11 +193,13 @@
       flex-direction: column;
       max-width: 100%;
     }
+    body.shared-view .ecard-left,
+    body.shared-view .ecard-right {
+      width: 100%;
+    }
   </style>
 </head>
 <body>
-
-<!-- ... HTML content before this remains unchanged ... -->
 
 <div id="ecard-view">
   <div id="ecard-content">
@@ -212,11 +214,7 @@
   </div>
 </div>
 
-<!-- ... Rest of HTML remains unchanged ... -->
-
 <script>
-// ... All previous JS functions remain unchanged ...
-
 window.onload = () => {
   const params = new URLSearchParams(window.location.search);
   if (params.has('card')) {
@@ -234,9 +232,9 @@ window.onload = () => {
     document.getElementById('ecard-custom').textContent = msg;
     document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
     document.getElementById('ecard-view').style.display = 'block';
-    document.getElementById('ecard-form').style.display = 'none';
-    document.querySelector('.main-swiper').style.display = 'none';
-    document.querySelector('.thumbs').style.display = 'none';
+    document.getElementById('ecard-form')?.style?.display = 'none';
+    document.querySelector('.main-swiper')?.style?.display = 'none';
+    document.querySelector('.thumbs')?.style?.display = 'none';
   }
 };
 </script>
