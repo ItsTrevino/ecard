@@ -29,6 +29,7 @@
       transform: scale(1.05);
     }
 
+    /* För förhandsvisningen */
     #ecard-view {
       display: none;
       margin-top: 30px;
@@ -37,7 +38,7 @@
       margin-left: auto;
       margin-right: auto;
       background: transparent;
-      max-width: none;
+      max-width: 100%; /* För att förhindra att det är för litet */
     }
 
     #ecard-content {
@@ -85,29 +86,21 @@
       font-weight: bold;
     }
 
-    .actions {
+    .ecard-trailer {
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      width: 100%;
-      margin: 20px auto 0;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 30px;
     }
 
-    .actions img {
-      width: 60px;
-      cursor: pointer;
+    .ecard-trailer img {
+      width: 48%;
     }
 
-    .confirmation {
-      margin-top: 20px;
-      font-weight: bold;
-      color: green;
-    }
-
+    /* Anpassningar för delningslänken */
     #ecard-view-sharing {
-      width: 100% !important;
-      max-width: 1500px !important;
+      width: 100% !important;  /* Ta upp hela bredden */
+      max-width: 1500px !important; /* Maximalt 1500px brett */
       padding: 30px;
       background: transparent;
       box-sizing: border-box;
@@ -126,7 +119,7 @@
       font-size: 24px !important;
     }
 
-    /* För mobilvyn */
+    /* För mindre skärmar */
     @media screen and (max-width: 600px) {
       #ecard-view-sharing {
         width: 100% !important;
@@ -146,10 +139,35 @@
         font-size: 18px !important;
       }
     }
+
+    /* För de andra bilderna i swiper */
+    .swiper {
+      width: 100%;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-swiper .swiper-slide img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body>
 
+  <!-- Kortval och visning -->
   <h1 style="margin-bottom: 10px;"></h1>
   <div class="swiper main-swiper" style="max-width: 400px; margin: 0 auto 20px;">
     <div class="swiper-wrapper">
