@@ -356,14 +356,14 @@ Läs ditt kort här: ${link}`;
 // Swiper init
 const mainSwiper = new Swiper('.main-swiper', {
   spaceBetween: 10,
-  
   on: {
     slideChange: function () {
       const index = this.activeIndex;
       if (index === 0) selectCard('vitva', false);
       if (index === 1) selectCard('bio', false);
       if (index === 2) selectCard('friend', false);
-      }
+    }
+  }
 });
 
 window.onload = () => {
