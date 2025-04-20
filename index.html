@@ -30,14 +30,13 @@
     }
 
     #ecard-view {
-      display: none;  /* Förhindra att förhandsvisningen visas */
+      display: none;
       margin-top: 30px;
       padding: 0;
       width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      background: transparent; /* Ta bort bakgrundsfärgen */
-      max-width: none; /* Ta bort maxbredden */
+      background: transparent; 
+      max-width: none;
+      /* Vi tar bort max-width här för att förhindra begränsning av storleken */
     }
 
     #ecard-content {
@@ -85,90 +84,14 @@
       font-weight: bold;
     }
 
-    .ecard-trailer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 30px;
-    }
-
-    .ecard-trailer img {
-      width: 48%;
-    }
-
-    .ecard-trailer .qr-box {
-      width: 48%;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: white;
-      border: 2px solid #0056b8;
-      color: #0056b8;
-      font-weight: bold;
-    }
-
-    .swiper {
-      width: 100%;
-      margin: 20px auto;
-      max-width: 600px;
-    }
-
-    .swiper-slide {
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .main-swiper .swiper-slide img {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      cursor: pointer;
-    }
-
-    input, textarea {
-      margin: 10px 0;
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 75%;
-      margin: 20px auto 0;
-    }
-
-    .actions img {
-      width: 60px;
-      cursor: pointer;
-    }
-
-    .confirmation {
-      margin-top: 20px;
-      font-weight: bold;
-      color: green;
-    }
-
-    #trailer {
-      display: none;
-    }
-
     /* Specifika justeringar för delningskortet */
     #ecard-view-sharing {
-      width: 100% !important;  /* Ta upp hela bredden */
+      width: 100% !important;  /* Fullbredd */
       max-width: 1500px !important; /* Maximalt 1500px brett */
       padding: 30px;
       background: transparent;
       box-sizing: border-box; /* Se till att padding inte påverkar storleken */
+      margin: 0 auto;
     }
 
     /* Textjustering för delningskortet */
@@ -184,24 +107,24 @@
       font-size: 24px !important; /* Större avsändartext */
     }
 
-    /* Anpassa layout för mindre skärmar */
+    /* För mobilvyn, gör kortet större på små skärmar */
     @media screen and (max-width: 600px) {
       #ecard-view-sharing {
-        width: 100% !important;  /* Fullbredd på mobiler */
-        max-width: 100% !important; /* Fullbredd även på små skärmar */
+        width: 100% !important;
+        max-width: 100% !important;
         padding: 20px !important;
       }
 
       #ecard-view-sharing #ecard-text {
-        font-size: 24px;
+        font-size: 24px !important;
       }
 
       #ecard-view-sharing #ecard-custom {
-        font-size: 20px;
+        font-size: 20px !important;
       }
 
       #ecard-view-sharing #ecard-from {
-        font-size: 18px;
+        font-size: 18px !important;
       }
     }
 
@@ -232,12 +155,12 @@
   </div>
 
   <div id="ecard-view">
-    <div id="ecard-content" style="position: relative; margin: 0 auto; max-width: 400px;">
+    <div id="ecard-content" style="position: relative; margin: 0 auto; max-width: 1500px;">
       <img id="ecard-img" src="" alt="Bakgrund med e-kort" style="width: 100%; height: auto; display: block; margin: 0 auto;">
       <div style="position: absolute; top: 10%; left: 54%; width: 35%; text-align: left; padding: 15px; color: #0056b8;">
-        <h1 id="ecard-text" style="color: white; font-size: 15px;"></h1>
-        <p class="ecard-message" id="ecard-custom" style="color: #0056b8; font-weight: bold; font-size: 12px; word-wrap: break-word; overflow-wrap: break-word; padding-right: 10px;"></p>
-        <p class="ecard-from" id="ecard-from" style="color: #0056b8; font-weight: bold; font-size: 12px; word-wrap: break-word; overflow-wrap: break-word; padding-right: 10px;"></p>
+        <h1 id="ecard-text" style="color: white; font-size: 36px;"></h1>
+        <p class="ecard-message" id="ecard-custom" style="color: #0056b8; font-weight: bold; font-size: 28px;"></p>
+        <p class="ecard-from" id="ecard-from" style="color: #0056b8; font-weight: bold; font-size: 24px;"></p>
       </div>
       <a href="https://www.youtube.com/watch?v=79cf3-XrXV8" target="_blank" style="position: absolute; bottom: 0; right: 0; width: 45%; height: 25%; display: block;"></a>
     </div>
