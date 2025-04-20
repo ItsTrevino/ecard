@@ -28,16 +28,15 @@
     .card-choice img:hover {
       transform: scale(1.05);
     }
-    #ecard-view {
-      display: none;
-      margin-top: 30px;
-      padding: 0;
-      width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      background: white;
-        /* Ta bort max-width: 400px för att inte påverka delningskortet */
-  max-width: none; /* Ta bort maxbredden för förhandsvisningen */
+   #ecard-view {
+  display: none;  /* Förhindra att förhandsvisningen visas */
+  margin-top: 30px;
+  padding: 0;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent; /* Ta bort bakgrundsfärgen */
+  max-width: none; /* Ta bort maxbredden */
     }
     #ecard-content {
       display: flex;
@@ -203,10 +202,11 @@ iframe .thumbs img {
 
     /* För delningslänken */
 #ecard-view-sharing {
-  max-width: 1500px; /* Öka max-bredden på kortet */
+  max-width: 1500px; /* Sätt maxbredden på kortet till en större storlek */
   width: 100%; /* Se till att kortet tar upp hela tillgängliga bredden */
   font-size: 22px; /* Större textstorlek för hela kortet */
   padding: 30px; /* Lägg till mer padding för utrymme */
+  background: transparent; /* Lägg till en bakgrundsfärg för delningskortet */
 }
 
 /* Anpassa textstorleken för rubriken och meddelandet */
