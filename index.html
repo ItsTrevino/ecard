@@ -368,27 +368,28 @@ const mainSwiper = new Swiper('.main-swiper', {
 });
 
 window.onload = () => {
-      const params = new URLSearchParams(window.location.search);
-      if (params.has('card')) {
-        selectedCard = params.get('card');
-        const msg = decodeURIComponent(params.get('msg') || cardMap[selectedCard].defaultMessage);
-        const from = decodeURIComponent(params.get('from') || '');
-        const bgMap = {
-  vitva: 'images/card1.jpg',
-  bio: 'images/card2.jpg',
-  friend: 'images/card3.jpg'
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('card')) {
+    document.body.classList.add('shared-view');
+    selectedCard = params.get('card');
+    const msg = decodeURIComponent(params.get('msg') || cardMap[selectedCard].defaultMessage);
+    const from = decodeURIComponent(params.get('from') || '');
+    const bgMap = {
+      vitva: 'images/card1.jpg',
+      bio: 'images/card2.jpg',
+      friend: 'images/card3.jpg'
+    };
+    document.getElementById('ecard-img').src = bgMap[selectedCard];
+    document.getElementById('ecard-text').textContent = cardMap[selectedCard].defaultMessage;
+    document.getElementById('ecard-custom').textContent = msg;
+    document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
+    document.getElementById('ecard-view').style.display = 'block';
+    document.getElementById('ecard-form').style.display = 'none';
+    document.querySelector('.main-swiper').style.display = 'none';
+    document.querySelector('.thumbs').style.display = 'none';
+  }
 };
-document.getElementById('ecard-img').src = bgMap[selectedCard];
-        document.getElementById('ecard-text').textContent = cardMap[selectedCard].defaultMessage;
-        document.getElementById('ecard-custom').textContent = msg;
-        document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
-        document.getElementById('ecard-view').style.display = 'block';
-        document.getElementById('ecard-form').style.display = 'none';
-        document.querySelector('.main-swiper').style.display = 'none';
-document.querySelector('.thumbs').style.display = 'none';
-      }
-    }
-  </script>
+</script>
 
 </body>
 </html>
