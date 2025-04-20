@@ -184,9 +184,16 @@ input, textarea {
         align-items: center;
         gap: 10px;
       }
-      .thumbs img {
+           .thumbs img {
         max-width: 80px;
       }
+    }
+    body.shared-view #ecard-view,
+    body.shared-view #ecard-content {
+      max-width: 1080px;
+    }
+    body.shared-view #ecard-content {
+      flex-direction: column;
     }
   </style>
 </head>
