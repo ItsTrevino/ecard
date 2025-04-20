@@ -179,10 +179,17 @@ input, textarea {
       input, textarea {
         width: 100%;
       }
-     .thumbs {
-  flex-direction: row;
-  justify-content: center;
-  gap: 10px;
+    .thumbs {
+    flex-direction: row; /* Gör så att bilderna visas horisontellt */
+    justify-content: center; /* Centrerar bilderna */
+    gap: 10px; /* Lägger till mellanrum mellan bilderna */
+    margin: 0 auto; /* Centrerar hela sektionen */
+  }
+
+  .thumbs img {
+    max-width: 80px;  /* Minskar storleken på thumbnailsen i mobilvy */
+    width: 80px;      /* Sätt en fast bredd för att säkerställa att alla bilder är lika stora */
+  }
 }
         /* Endast när delningslänken visas */
 #ecard-view-sharing {
