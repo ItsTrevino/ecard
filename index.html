@@ -28,6 +28,7 @@
     .card-choice img:hover {
       transform: scale(1.05);
     }
+
     #ecard-view {
       display: none;  /* Förhindra att förhandsvisningen visas */
       margin-top: 30px;
@@ -38,6 +39,7 @@
       background: transparent; /* Ta bort bakgrundsfärgen */
       max-width: none; /* Ta bort maxbredden */
     }
+
     #ecard-content {
       display: flex;
       justify-content: space-between;
@@ -45,15 +47,18 @@
       text-align: left;
       width: 100%;
     }
+
     .ecard-left {
       width: 50%;
     }
+
     .ecard-left img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
+
     .ecard-right {
       width: 50%;
       background: #fcd024;
@@ -65,26 +70,32 @@
       flex-direction: column;
       justify-content: space-between;
     }
+
     .ecard-right h1 {
       font-size: 28px;
       margin-bottom: 20px;
     }
+
     .ecard-message {
       font-style: normal; font-weight: bold;
       margin: 20px 0;
     }
+
     .ecard-from {
       font-weight: bold;
     }
+
     .ecard-trailer {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-top: 30px;
     }
+
     .ecard-trailer img {
       width: 48%;
     }
+
     .ecard-trailer .qr-box {
       width: 48%;
       height: 100px;
@@ -96,17 +107,20 @@
       color: #0056b8;
       font-weight: bold;
     }
+
     .swiper {
       width: 100%;
       margin: 20px auto;
       max-width: 600px;
     }
+
     .swiper-slide {
       text-align: center;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
     .main-swiper .swiper-slide img {
       width: 100%;
       max-width: 400px;
@@ -115,12 +129,14 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       cursor: pointer;
     }
+
     input, textarea {
       margin: 10px 0;
       padding: 10px;
       width: 80%;
       max-width: 400px;
     }
+
     .actions {
       display: flex;
       justify-content: center;
@@ -130,185 +146,70 @@
       max-width: 75%;
       margin: 20px auto 0;
     }
+
     .actions img {
       width: 60px;
       cursor: pointer;
     }
+
     .confirmation {
       margin-top: 20px;
       font-weight: bold;
       color: green;
     }
+
     #trailer {
       display: none;
     }
-    @media screen and (max-width: 600px) {
-      .swiper,
-      .main-swiper,
-      .thumbs,
-      #ecard-form,
-      #ecard-view {
-        max-width: 100% !important;
-        width: 90%;
-        margin: 0 auto;
-      }
-      .actions {
-        max-width: 90%;
-      }
-      .ecard-right {
-        padding: 20px 10px;
-        font-size: 16px;
-      }
-      .ecard-trailer img {
-        width: 100%;
-      }
-      .actions img {
-        width: 50px;
-      }
-      input, textarea {
-        width: 100%;
-      }
-      .thumbs {
-        flex-direction: row; /* Gör så att bilderna visas horisontellt */
-        justify-content: center; /* Centrerar bilderna */
-        gap: 10px; /* Lägger till mellanrum mellan bilderna */
-        margin: 0 auto; /* Centrerar hela sektionen */
-      }
 
-      .thumbs img {
-        max-width: 80px;  /* Minskar storleken på thumbnailsen i mobilvy */
-        width: 80px;      /* Sätt en fast bredd för att säkerställa att alla bilder är lika stora */
-      }
+    /* Specifika justeringar för delningskortet */
+    #ecard-view-sharing {
+      width: 100% !important;  /* Ta upp hela bredden */
+      max-width: 1500px !important; /* Maximalt 1500px brett */
+      padding: 30px;
+      background: transparent;
+      box-sizing: border-box; /* Se till att padding inte påverkar storleken */
     }
 
-   /* För iframe-vy - SPECIFIKT FÖR THUMBNAILS */
-iframe .thumbs {
-  gap: 5px;  /* Minska avståndet mellan bilderna i iframe */
-  margin: 0 auto; /* Centrera bilderna */
-}
+    /* Textjustering för delningskortet */
+    #ecard-view-sharing #ecard-text {
+      font-size: 36px !important; /* Större rubrik */
+    }
 
-iframe .thumbs img {
-  max-width: 70px;  /* Minska storleken på thumbnailsen i iframe */
-  width: 70px;      /* Sätt en fast bredd för att säkerställa att alla bilder är lika stora */
-}
+    #ecard-view-sharing #ecard-custom {
+      font-size: 28px !important; /* Större meddelande text */
+    }
 
-/* För delningslänken */
-#ecard-view-sharing {
-    max-width: 1500px !important; /* Lägg till !important för att säkerställa att maxbredden tillämpas */
-  width: 100% !important; /* Se till att kortet tar upp hela tillgängliga bredden */
-  font-size: 22px; /* Större textstorlek för hela kortet */
-  padding: 30px; /* Lägg till mer padding för utrymme */
-  background: transparent; /* Lägg till en bakgrundsfärg för delningskortet */
-}
+    #ecard-view-sharing #ecard-from {
+      font-size: 24px !important; /* Större avsändartext */
+    }
 
-/* Anpassa textstorleken för rubriken och meddelandet */
-#ecard-view-sharing #ecard-text {
-  font-size: 36px; /* Större rubriktext */
-}
-
-#ecard-view-sharing #ecard-custom {
-  font-size: 28px; /* Större meddelandetext */
-}
-
-#ecard-view-sharing #ecard-from {
-  font-size: 24px; /* Större text för avsändaren */
-}
-
-    /* För mobilvyn, specifikt för delningskortet */
+    /* Anpassa layout för mindre skärmar */
     @media screen and (max-width: 600px) {
-      /* Allmänna anpassningar för mobil */
-      .swiper,
-      .main-swiper,
-      .thumbs,
-      #ecard-form,
-      #ecard-view {
-        max-width: 100% !important;
-        width: 90%;
-        margin: 0 auto;
-      }
-
-      .actions {
-        max-width: 90%;
-      }
-
-      .ecard-right {
-        padding: 20px 10px;
-        font-size: 16px;
-      }
-
-      .ecard-trailer img {
-        width: 100%;
-      }
-
-      .actions img {
-        width: 50px;
-      }
-
-      input,
-      textarea {
-        width: 100%;
-      }
-
-      /* För thumbs (små bilder under kortet) */
-      .thumbs {
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-      }
-
-      .thumbs img {
-        max-width: 50px; /* Minskar storleken på thumbnailsen i mobilvy */
-      }
-
-      /* Endast när delningslänken visas */
       #ecard-view-sharing {
-        max-width: 1000px; /* Öka max-bredden på kortet */
-        width: 100%; /* Se till att kortet tar upp hela tillgängliga bredden */
-        font-size: 18px; /* Öka textstorleken för hela kortet */
+        width: 100% !important;  /* Fullbredd på mobiler */
+        max-width: 100% !important; /* Fullbredd även på små skärmar */
+        padding: 20px !important;
       }
 
       #ecard-view-sharing #ecard-text {
-        font-size: 24px; /* Större rubriktext */
+        font-size: 24px;
       }
 
       #ecard-view-sharing #ecard-custom {
-        font-size: 18px; /* Större meddelandetext */
+        font-size: 20px;
       }
 
       #ecard-view-sharing #ecard-from {
-        font-size: 16px; /* Större text för avsändaren */
-      }
-
-      /* För mobilvyn, specifikt för delningskortet */
-      #ecard-view-sharing {
-        max-width: 90% !important;
-        width: 90%;
-        margin: 0 auto;
-      }
-
-      #ecard-view-sharing #ecard-content {
-        max-width: 90% !important;
-        width: 100%;
-        margin: 0 auto;
-        font-size: 16px; /* Anpassa textstorleken på mobilen */
-      }
-
-      #ecard-view-sharing #ecard-text {
-        font-size: 20px; /* Anpassa rubrikstorleken på mobilen */
-      }
-
-      #ecard-view-sharing #ecard-custom {
-        font-size: 14px; /* Anpassa meddelandetexten på mobilen */
-      }
-
-      #ecard-view-sharing #ecard-from {
-        font-size: 12px; /* Anpassa avsändartexten på mobilen */
+        font-size: 18px;
       }
     }
+
   </style>
 </head>
 <body>
 
+  <!-- Kortval och visning -->
   <h1 style="margin-bottom: 10px;"></h1>
   <div class="swiper main-swiper" style="max-width: 400px; margin: 0 auto 20px;">
     <div class="swiper-wrapper">
