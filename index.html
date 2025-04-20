@@ -142,30 +142,23 @@
     #trailer {
       display: none;
     }
-
-    /* Always display thumbnails horizontally */
+    /* Justeringar för thumbnails på alla skärmstorlekar */
     .thumbs {
       width: 100%;
       max-width: 400px;
       margin: 0 auto 30px;
       display: flex;
-      justify-content: space-between; /* Horizontally align thumbnails */
-      gap: 20px; /* Add some space between thumbnails */
+      justify-content: space-between;
+      gap: 20px;
     }
-
     .thumbs img {
       max-width: 100px;
       cursor: pointer;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-
     @media screen and (max-width: 600px) {
-      .swiper,
-      .main-swiper,
-      .thumbs,
-      #ecard-form,
-      #ecard-view {
+      .swiper, .main-swiper, .thumbs, #ecard-form, #ecard-view {
         max-width: 100% !important;
         width: 90%;
         margin: 0 auto;
@@ -173,11 +166,7 @@
       .actions {
         max-width: 90%;
       }
-      .swiper,
-      .main-swiper,
-      .thumbs,
-      #ecard-form,
-      #ecard-view {
+      .swiper, .main-swiper, .thumbs, #ecard-form, #ecard-view {
         max-width: 90% !important;
         margin: 0 auto;
       }
@@ -248,7 +237,46 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script>
-    // Your existing JavaScript goes here
+    let selectedCard = '';
+    const cardMap = {
+      bio: { img: 'images/bio.jpg', defaultMessage: 'Vill du gå på bio med mig?' },
+      vitva: { img: 'images/vitva.jpg', defaultMessage: 'Jag tror den här kan vara något för oss!' },
+      friend: { img: 'images/friend.jpg', defaultMessage: 'Vill du bli min Bob Trevino?' }
+    };
+
+    function selectCard(cardKey, shouldSlide = true) {
+      selectedCard = cardKey;
+
+      const bgMap = {
+        vitva: 'images/card1.jpg',
+        bio: 'images/card2.jpg',
+        friend: 'images/card3.jpg'
+      };
+
+      document.getElementById('ecard-img').src = bgMap[cardKey];
+      document.getElementById('ecard-text').textContent = cardMap[cardKey].defaultMessage;
+      document.getElementById('ecard-custom').textContent = '';
+      document.getElementById('ecard-from').textContent = '';
+      document.getElementById('ecard-view').style.display = 'block';
+      document.getElementById('ecard-form').style.display = 'block';
+
+      if (shouldSlide && typeof mainSwiper !== 'undefined') {
+        const slideIndex = cardKey === 'vitva' ? 0 : cardKey === 'bio' ? 1 : 2;
+        mainSwiper.slideTo(slideIndex);
+      }
+    }
+
+    const mainSwiper = new Swiper('.main-swiper', {
+      spaceBetween: 10,
+      on: {
+        slideChange: function () {
+          const index = this.activeIndex;
+          if (index === 0) selectCard('vitva', false);
+          if (index === 1) selectCard('bio', false);
+          if (index === 2) selectCard('friend', false);
+        }
+      }
+    });
   </script>
 
 </body>
