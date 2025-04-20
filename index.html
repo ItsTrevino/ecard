@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <style>
     body {
-  overflow-x: hidden;
+      overflow-x: hidden;
       font-family: sans-serif;
       text-align: center;
       padding: 30px;
@@ -19,25 +19,25 @@
       flex-wrap: wrap;
     }
     .card-choice img {
-  width: 150px;
-  cursor: pointer;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
-}
+      width: 150px;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
     .card-choice img:hover {
       transform: scale(1.05);
     }
     #ecard-view {
-  display: none;
-  margin-top: 30px;
-  padding: 0;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: white;
-  max-width: 400px;
-}
+      display: none;
+      margin-top: 30px;
+      padding: 0;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      background: white;
+      max-width: 400px;
+    }
     #ecard-content {
       display: flex;
       justify-content: space-between;
@@ -97,46 +97,43 @@
       font-weight: bold;
     }
     .swiper {
-  width: 100%;
-  margin: 20px auto;
-  max-width: 600px;
-}
-.swiper-slide {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.main-swiper .swiper-slide img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  cursor: pointer;
-}
-
-
-
-input, textarea {
+      width: 100%;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    .swiper-slide {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .main-swiper .swiper-slide img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+    input, textarea {
       margin: 10px 0;
       padding: 10px;
       width: 80%;
       max-width: 400px;
     }
     .actions {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 75%;
-  margin: 20px auto 0;
-}
-.actions img {
-  width: 60px;
-  cursor: pointer;
-}
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 75%;
+      margin: 20px auto 0;
+    }
+    .actions img {
+      width: 60px;
+      cursor: pointer;
+    }
     .confirmation {
       margin-top: 20px;
       font-weight: bold;
@@ -145,7 +142,7 @@ input, textarea {
     #trailer {
       display: none;
     }
-      @media screen and (max-width: 600px) {
+    @media screen and (max-width: 600px) {
       .swiper,
       .main-swiper,
       .thumbs,
@@ -179,230 +176,226 @@ input, textarea {
       input, textarea {
         width: 100%;
       }
-    .thumbs {
-    flex-direction: row; /* Gör så att bilderna visas horisontellt */
-    justify-content: center; /* Centrerar bilderna */
-    gap: 10px; /* Lägger till mellanrum mellan bilderna */
-    margin: 0 auto; /* Centrerar hela sektionen */
-  }
+      .thumbs {
+        flex-direction: row; /* Gör så att bilderna visas horisontellt */
+        justify-content: center; /* Centrerar bilderna */
+        gap: 10px; /* Lägger till mellanrum mellan bilderna */
+        margin: 0 auto; /* Centrerar hela sektionen */
+      }
 
-  .thumbs img {
-    max-width: 80px;  /* Minskar storleken på thumbnailsen i mobilvy */
-    width: 80px;      /* Sätt en fast bredd för att säkerställa att alla bilder är lika stora */
-  }
-}
-        /* För delningslänken */
-#ecard-view-sharing {
-  max-width: 800px; /* Öka max-bredden på kortet */
-  width: 100%; /* Se till att kortet tar upp hela tillgängliga bredden */
-  font-size: 18px; /* Öka textstorleken för hela kortet */
-  padding: 20px; /* Lägg till padding för mer utrymme */
-}
-
-/* Anpassa textstorleken för rubriken och meddelandet */
-#ecard-view-sharing #ecard-text {
-  font-size: 30px; /* Större rubriktext */
-}
-
-#ecard-view-sharing #ecard-custom {
-  font-size: 22px; /* Större meddelandetext */
-}
-
-#ecard-view-sharing #ecard-from {
-  font-size: 20px; /* Större text för avsändaren */
-}
-
-/* För mobilvyn, specifikt för delningskortet */
-@media screen and (max-width: 600px) {
-    /* Allmänna anpassningar för mobil */
-    .swiper,
-    .main-swiper,
-    .thumbs,
-    #ecard-form,
-    #ecard-view {
-        max-width: 100% !important;
-        width: 90%;
-        margin: 0 auto;
+      .thumbs img {
+        max-width: 80px;  /* Minskar storleken på thumbnailsen i mobilvy */
+        width: 80px;      /* Sätt en fast bredd för att säkerställa att alla bilder är lika stora */
+      }
     }
 
-    .actions {
-        max-width: 90%;
+    /* För iframe-vy */
+    iframe .thumbs {
+      gap: 5px;  /* Minska avståndet mellan bilderna i iframe */
     }
 
-    .ecard-right {
-        padding: 20px 10px;
-        font-size: 16px;
-    }
-
-    .ecard-trailer img {
-        width: 100%;
-    }
-
-    .actions img {
-        width: 50px;
-    }
-
-    input,
-    textarea {
-        width: 100%;
-    }
-
-    /* För thumbs (små bilder under kortet) */
-    .thumbs {
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .thumbs img {
-        max-width: 50px; /* Minskar storleken på thumbnailsen i mobilvy */
-    }
-
-    /* Endast när delningslänken visas */
+    /* För delningslänken */
     #ecard-view-sharing {
-        max-width: 600px; /* Öka max-bredden på kortet */
-        width: 100%; /* Se till att kortet tar upp hela tillgängliga bredden */
-        font-size: 18px; /* Öka textstorleken för hela kortet */
+      max-width: 800px; /* Öka max-bredden på kortet */
+      width: 100%; /* Se till att kortet tar upp hela tillgängliga bredden */
+      font-size: 18px; /* Öka textstorleken för hela kortet */
+      padding: 20px; /* Lägg till padding för mer utrymme */
     }
 
+    /* Anpassa textstorleken för rubriken och meddelandet */
     #ecard-view-sharing #ecard-text {
-        font-size: 24px; /* Större rubriktext */
+      font-size: 30px; /* Större rubriktext */
     }
 
     #ecard-view-sharing #ecard-custom {
-        font-size: 18px; /* Större meddelandetext */
+      font-size: 22px; /* Större meddelandetext */
     }
 
     #ecard-view-sharing #ecard-from {
-        font-size: 16px; /* Större text för avsändaren */
+      font-size: 20px; /* Större text för avsändaren */
     }
 
     /* För mobilvyn, specifikt för delningskortet */
-    #ecard-view-sharing {
+    @media screen and (max-width: 600px) {
+      /* Allmänna anpassningar för mobil */
+      .swiper,
+      .main-swiper,
+      .thumbs,
+      #ecard-form,
+      #ecard-view {
+        max-width: 100% !important;
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      .actions {
+        max-width: 90%;
+      }
+
+      .ecard-right {
+        padding: 20px 10px;
+        font-size: 16px;
+      }
+
+      .ecard-trailer img {
+        width: 100%;
+      }
+
+      .actions img {
+        width: 50px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+      }
+
+      /* För thumbs (små bilder under kortet) */
+      .thumbs {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .thumbs img {
+        max-width: 50px; /* Minskar storleken på thumbnailsen i mobilvy */
+      }
+
+      /* Endast när delningslänken visas */
+      #ecard-view-sharing {
+        max-width: 600px; /* Öka max-bredden på kortet */
+        width: 100%; /* Se till att kortet tar upp hela tillgängliga bredden */
+        font-size: 18px; /* Öka textstorleken för hela kortet */
+      }
+
+      #ecard-view-sharing #ecard-text {
+        font-size: 24px; /* Större rubriktext */
+      }
+
+      #ecard-view-sharing #ecard-custom {
+        font-size: 18px; /* Större meddelandetext */
+      }
+
+      #ecard-view-sharing #ecard-from {
+        font-size: 16px; /* Större text för avsändaren */
+      }
+
+      /* För mobilvyn, specifikt för delningskortet */
+      #ecard-view-sharing {
         max-width: 90% !important;
         width: 90%;
         margin: 0 auto;
-    }
+      }
 
-    #ecard-view-sharing #ecard-content {
+      #ecard-view-sharing #ecard-content {
         max-width: 90% !important;
         width: 100%;
         margin: 0 auto;
         font-size: 16px; /* Anpassa textstorleken på mobilen */
-    }
+      }
 
-    #ecard-view-sharing #ecard-text {
+      #ecard-view-sharing #ecard-text {
         font-size: 20px; /* Anpassa rubrikstorleken på mobilen */
-    }
+      }
 
-    #ecard-view-sharing #ecard-custom {
+      #ecard-view-sharing #ecard-custom {
         font-size: 14px; /* Anpassa meddelandetexten på mobilen */
-    }
+      }
 
-    #ecard-view-sharing #ecard-from {
+      #ecard-view-sharing #ecard-from {
         font-size: 12px; /* Anpassa avsändartexten på mobilen */
+      }
     }
-}
   </style>
 </head>
 <body>
 
   <h1 style="margin-bottom: 10px;"></h1>
   <div class="swiper main-swiper" style="max-width: 400px; margin: 0 auto 20px;">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')">
-    </div>
-    <div class="swiper-slide">
-      <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')">
-    </div>
-    <div class="swiper-slide">
-      <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')">
+      </div>
     </div>
   </div>
-</div>
 
-<div class="thumbs" style="width: 100%; max-width: 400px; margin: 0 auto 30px; display: flex; justify-content: space-between;">
-  <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-  <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-  <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-</div>
-  
-  
-</div>
-  
-  
-
+  <div class="thumbs" style="width: 100%; max-width: 400px; margin: 0 auto 30px; display: flex; justify-content: space-between;">
+    <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+  </div>
 
   <div id="ecard-view">
     <div id="ecard-content" style="position: relative; margin: 0 auto; max-width: 400px;">
-  <img id="ecard-img" src="" alt="Bakgrund med e-kort" style="width: 100%; height: auto; display: block; margin: 0 auto;">
-  <div style="position: absolute; top: 10%; left: 54%; width: 35%; text-align: left; padding: 15px; color: #0056b8;">
-    <h1 id="ecard-text" style="color: white; font-size: 15px;"></h1>
-    <p class="ecard-message" id="ecard-custom" style="color: #0056b8; font-weight: bold; font-size: 12px; word-wrap: break-word; overflow-wrap: break-word; padding-right: 10px;"></p>
-    <p class="ecard-from" id="ecard-from" style="color: #0056b8; font-weight: bold; font-size: 12px; word-wrap: break-word; overflow-wrap: break-word; padding-right: 10px;"></p>
-  </div>
-  <a href="https://www.youtube.com/watch?v=79cf3-XrXV8" target="_blank" style="position: absolute; bottom: 0; right: 0; width: 45%; height: 25%; display: block;"></a>
-</div>
-      
-        
+      <img id="ecard-img" src="" alt="Bakgrund med e-kort" style="width: 100%; height: auto; display: block; margin: 0 auto;">
+      <div style="position: absolute; top: 10%; left: 54%; width: 35%; text-align: left; padding: 15px; color: #0056b8;">
+        <h1 id="ecard-text" style="color: white; font-size: 15px;"></h1>
+        <p class="ecard-message" id="ecard-custom" style="color: #0056b8; font-weight: bold; font-size: 12px; word-wrap: break-word; overflow-wrap: break-word; padding-right: 10px;"></p>
+        <p class="ecard-from" id="ecard-from" style="color: #0056b8; font-weight: bold; font-size: 12px; word-wrap: break-word; overflow-wrap: break-word; padding-right: 10px;"></p>
       </div>
+      <a href="https://www.youtube.com/watch?v=79cf3-XrXV8" target="_blank" style="position: absolute; bottom: 0; right: 0; width: 45%; height: 25%; display: block;"></a>
     </div>
-
-<div id="ecard-form" style="background: white; padding: 30px; width: 100%; max-width: 400px; margin: 30px auto; display: none;">
-  <input type="text" id="fromName" placeholder="Från (ditt namn)" required oninput="updatePreview()"><br>
-  <textarea id="customMsg" rows="4" placeholder="Ditt meddelande" oninput="updatePreview()"></textarea><br>
-  <div class="actions">
-    <img src="images/download.png" alt="Ladda ner" onclick="downloadCard()">
-    <img src="images/copylink.png" alt="Kopiera länk" onclick="copyLink()">
-    <img src="images/sharefb.png" alt="Dela på Facebook" onclick="shareFacebook()">
-    <img src="images/email.png" alt="Skicka via e-post" onclick="sendViaEmail()">
   </div>
-</div>
 
-<div id="confirmation" class="confirmation"></div>
+  <div id="ecard-form" style="background: white; padding: 30px; width: 100%; max-width: 400px; margin: 30px auto; display: none;">
+    <input type="text" id="fromName" placeholder="Från (ditt namn)" required oninput="updatePreview()"><br>
+    <textarea id="customMsg" rows="4" placeholder="Ditt meddelande" oninput="updatePreview()"></textarea><br>
+    <div class="actions">
+      <img src="images/download.png" alt="Ladda ner" onclick="downloadCard()">
+      <img src="images/copylink.png" alt="Kopiera länk" onclick="copyLink()">
+      <img src="images/sharefb.png" alt="Dela på Facebook" onclick="shareFacebook()">
+      <img src="images/email.png" alt="Skicka via e-post" onclick="sendViaEmail()">
+    </div>
   </div>
+
+  <div id="confirmation" class="confirmation"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script>
     let selectedCard = '';
     const cardMap = {
-  bio: {
-    img: 'images/bio.jpg',
-    defaultMessage: 'Vill du gå på bio med mig?'
-  },
-  vitva: {
-    img: 'images/vitva.jpg',
-    defaultMessage: 'Jag tror den här kan vara något för oss!'
-  },
-  friend: {
-    img: 'images/friend.jpg',
-    defaultMessage: 'Vill du bli min Bob Trevino?'
-  }
-};
+      bio: {
+        img: 'images/bio.jpg',
+        defaultMessage: 'Vill du gå på bio med mig?'
+      },
+      vitva: {
+        img: 'images/vitva.jpg',
+        defaultMessage: 'Jag tror den här kan vara något för oss!'
+      },
+      friend: {
+        img: 'images/friend.jpg',
+        defaultMessage: 'Vill du bli min Bob Trevino?'
+      }
+    };
 
     function selectCard(cardKey, shouldSlide = true) {
-  selectedCard = cardKey;
+      selectedCard = cardKey;
 
-  const bgMap = {
-    vitva: 'images/card1.jpg',
-    bio: 'images/card2.jpg',
-    friend: 'images/card3.jpg'
-  };
+      const bgMap = {
+        vitva: 'images/card1.jpg',
+        bio: 'images/card2.jpg',
+        friend: 'images/card3.jpg'
+      };
 
-  document.getElementById('ecard-img').src = bgMap[cardKey];
-  document.getElementById('ecard-text').textContent = cardMap[cardKey].defaultMessage;
-  document.getElementById('ecard-custom').textContent = '';
-  document.getElementById('ecard-from').textContent = '';
-  document.getElementById('ecard-view').style.display = 'block';
-  document.getElementById('ecard-form').style.display = 'block';
+      document.getElementById('ecard-img').src = bgMap[selectedCard];
+      document.getElementById('ecard-text').textContent = cardMap[selectedCard].defaultMessage;
+      document.getElementById('ecard-custom').textContent = '';
+      document.getElementById('ecard-from').textContent = '';
+      document.getElementById('ecard-view').style.display = 'block';
+      document.getElementById('ecard-form').style.display = 'block';
 
-  if (shouldSlide && typeof mainSwiper !== 'undefined') {
-    const slideIndex = cardKey === 'vitva' ? 0 : cardKey === 'bio' ? 1 : 2;
-    mainSwiper.slideTo(slideIndex);
-  }
-}
+      if (shouldSlide && typeof mainSwiper !== 'undefined') {
+        const slideIndex = cardKey === 'vitva' ? 0 : cardKey === 'bio' ? 1 : 2;
+        mainSwiper.slideTo(slideIndex);
+      }
+    }
 
     function handleSubmit(event) {
       event.preventDefault();
@@ -414,16 +407,15 @@ input, textarea {
     }
 
     function downloadCard() {
-  const form = document.getElementById('ecard-form');
-  form.style.display = 'none';
-  html2canvas(document.getElementById('ecard-content')).then(canvas => {
-    const link = document.createElement('a');
-    link.download = 'ecard.png';
-    link.href = canvas.toDataURL();
-    link.click();
-    form.style.display = 'block';
-  });
-      
+      const form = document.getElementById('ecard-form');
+      form.style.display = 'none';
+      html2canvas(document.getElementById('ecard-content')).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'ecard.png';
+        link.href = canvas.toDataURL();
+        link.click();
+        form.style.display = 'block';
+      });
     }
 
     function copyLink() {
@@ -463,49 +455,49 @@ Läs ditt kort här: ${link}`;
     }
 
     function updatePreview() {
-  const from = document.getElementById('fromName').value;
-  const msg = document.getElementById('customMsg').value;
-  document.getElementById('ecard-custom').textContent = msg || '';
-  document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
-}
-
-// Swiper init
-const mainSwiper = new Swiper('.main-swiper', {
-  spaceBetween: 10,
-  on: {
-    slideChange: function () {
-      const index = this.activeIndex;
-      if (index === 0) selectCard('vitva', false);
-      if (index === 1) selectCard('bio', false);
-      if (index === 2) selectCard('friend', false);
+      const from = document.getElementById('fromName').value;
+      const msg = document.getElementById('customMsg').value;
+      document.getElementById('ecard-custom').textContent = msg || '';
+      document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
     }
-  }
-});
 
-window.onload = () => {
-  const params = new URLSearchParams(window.location.search);
-  if (params.has('card')) {
-    selectedCard = params.get('card');
-    const msg = decodeURIComponent(params.get('msg') || cardMap[selectedCard].defaultMessage);
-    const from = decodeURIComponent(params.get('from') || '');
-    const bgMap = {
-      vitva: 'images/card1.jpg',
-      bio: 'images/card2.jpg',
-      friend: 'images/card3.jpg'
-    };
-    document.getElementById('ecard-img').src = bgMap[selectedCard];
-    document.getElementById('ecard-text').textContent = cardMap[selectedCard].defaultMessage;
-    document.getElementById('ecard-custom').textContent = msg;
-    document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
-    document.getElementById('ecard-view').style.display = 'block';
-    document.getElementById('ecard-form').style.display = 'none';
-    document.querySelector('.main-swiper').style.display = 'none';
-    document.querySelector('.thumbs').style.display = 'none';
+    // Swiper init
+    const mainSwiper = new Swiper('.main-swiper', {
+      spaceBetween: 10,
+      on: {
+        slideChange: function () {
+          const index = this.activeIndex;
+          if (index === 0) selectCard('vitva', false);
+          if (index === 1) selectCard('bio', false);
+          if (index === 2) selectCard('friend', false);
+        }
+      }
+    });
 
-    // Lägg till klassen för delningslänken så texten blir större
-    document.getElementById('ecard-view').classList.add('ecard-view-sharing');
-  }
-}
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('card')) {
+        selectedCard = params.get('card');
+        const msg = decodeURIComponent(params.get('msg') || cardMap[selectedCard].defaultMessage);
+        const from = decodeURIComponent(params.get('from') || '');
+        const bgMap = {
+          vitva: 'images/card1.jpg',
+          bio: 'images/card2.jpg',
+          friend: 'images/card3.jpg'
+        };
+        document.getElementById('ecard-img').src = bgMap[selectedCard];
+        document.getElementById('ecard-text').textContent = cardMap[selectedCard].defaultMessage;
+        document.getElementById('ecard-custom').textContent = msg;
+        document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
+        document.getElementById('ecard-view').style.display = 'block';
+        document.getElementById('ecard-form').style.display = 'none';
+        document.querySelector('.main-swiper').style.display = 'none';
+        document.querySelector('.thumbs').style.display = 'none';
+
+        // Lägg till klassen för delningslänken så texten blir större
+        document.getElementById('ecard-view').classList.add('ecard-view-sharing');
+      }
+    }
   </script>
 
 </body>
