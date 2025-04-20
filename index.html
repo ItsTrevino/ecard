@@ -30,14 +30,14 @@
     }
 
     #ecard-view {
-      display: none;  /* Förhindra att förhandsvisningen visas */
+      display: none;
       margin-top: 30px;
       padding: 0;
       width: 100%;
       margin-left: auto;
       margin-right: auto;
-      background: transparent; /* Ta bort bakgrundsfärgen */
-      max-width: none; /* Ta bort maxbredden */
+      background: transparent;
+      max-width: none;
     }
 
     #ecard-content {
@@ -77,7 +77,7 @@
     }
 
     .ecard-message {
-      font-style: normal; font-weight: bold;
+      font-weight: bold;
       margin: 20px 0;
     }
 
@@ -85,34 +85,52 @@
       font-weight: bold;
     }
 
-    /* Specifika justeringar för delningskortet */
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      width: 100%;
+      margin: 20px auto 0;
+    }
+
+    .actions img {
+      width: 60px;
+      cursor: pointer;
+    }
+
+    .confirmation {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+
     #ecard-view-sharing {
-      width: 100% !important;  /* Ta upp hela bredden */
-      max-width: 1500px !important; /* Maximalt 1500px brett */
+      width: 100% !important;
+      max-width: 1500px !important;
       padding: 30px;
       background: transparent;
       box-sizing: border-box;
       margin: 0 auto;
     }
 
-    /* Textjustering för delningskortet */
     #ecard-view-sharing #ecard-text {
-      font-size: 36px !important; /* Större rubrik */
+      font-size: 36px !important;
     }
 
     #ecard-view-sharing #ecard-custom {
-      font-size: 28px !important; /* Större meddelande text */
+      font-size: 28px !important;
     }
 
     #ecard-view-sharing #ecard-from {
-      font-size: 24px !important; /* Större avsändartext */
+      font-size: 24px !important;
     }
 
-    /* Anpassa layout för mindre skärmar */
+    /* För mobilvyn */
     @media screen and (max-width: 600px) {
       #ecard-view-sharing {
         width: 100% !important;
-        max-width: 100% !important; /* Fullbredd på mobiler */
+        max-width: 100% !important;
         padding: 20px !important;
       }
 
@@ -128,65 +146,10 @@
         font-size: 18px !important;
       }
     }
-
-    .swiper {
-      width: 100%;
-      margin: 20px auto;
-      max-width: 600px;
-    }
-
-    .swiper-slide {
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .main-swiper .swiper-slide img {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      cursor: pointer;
-    }
-
-    input, textarea {
-      margin: 10px 0;
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 75%;
-      margin: 20px auto 0;
-    }
-
-    .actions img {
-      width: 60px;
-      cursor: pointer;
-    }
-
-    .confirmation {
-      margin-top: 20px;
-      font-weight: bold;
-      color: green;
-    }
-
-    #trailer {
-      display: none;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Kortval och visning -->
   <h1 style="margin-bottom: 10px;"></h1>
   <div class="swiper main-swiper" style="max-width: 400px; margin: 0 auto 20px;">
     <div class="swiper-wrapper">
@@ -203,18 +166,18 @@
   </div>
 
   <div class="thumbs" style="width: 100%; max-width: 400px; margin: 0 auto 30px; display: flex; justify-content: space-between;">
-    <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')" style="max-width: 100px; cursor: pointer; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <img src="images/vitva.jpg" alt="VI TVÅ!" onclick="selectCard('vitva')" style="max-width: 100px; cursor: pointer;">
+    <img src="images/bio.jpg" alt="BIO" onclick="selectCard('bio')" style="max-width: 100px; cursor: pointer;">
+    <img src="images/friend.jpg" alt="FRIEND REQUEST" onclick="selectCard('friend')" style="max-width: 100px; cursor: pointer;">
   </div>
 
   <div id="ecard-view">
     <div id="ecard-content" style="position: relative; margin: 0 auto; max-width: 400px;">
       <img id="ecard-img" src="" alt="Bakgrund med e-kort" style="width: 100%; height: auto; display: block; margin: 0 auto;">
       <div style="position: absolute; top: 10%; left: 54%; width: 35%; text-align: left; padding: 15px; color: #0056b8;">
-        <h1 id="ecard-text" style="color: white; font-size: 15px;"></h1>
-        <p class="ecard-message" id="ecard-custom" style="color: #0056b8; font-weight: bold; font-size: 12px;"></p>
-        <p class="ecard-from" id="ecard-from" style="color: #0056b8; font-weight: bold; font-size: 12px;"></p>
+        <h1 id="ecard-text" style="color: white;"></h1>
+        <p class="ecard-message" id="ecard-custom" style="color: #0056b8; font-weight: bold;"></p>
+        <p class="ecard-from" id="ecard-from" style="color: #0056b8; font-weight: bold;"></p>
       </div>
       <a href="https://www.youtube.com/watch?v=79cf3-XrXV8" target="_blank" style="position: absolute; bottom: 0; right: 0; width: 45%; height: 25%; display: block;"></a>
     </div>
@@ -273,7 +236,97 @@
         mainSwiper.slideTo(slideIndex);
       }
     }
-    // Script fortsätter som vanligt...
+
+    function downloadCard() {
+      const form = document.getElementById('ecard-form');
+      form.style.display = 'none';
+      html2canvas(document.getElementById('ecard-content')).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'ecard.png';
+        link.href = canvas.toDataURL();
+        link.click();
+        form.style.display = 'block';
+      });
+    }
+
+    function copyLink() {
+      const msg = encodeURIComponent(document.getElementById('ecard-custom').textContent);
+      const from = encodeURIComponent(document.getElementById('ecard-from').textContent.replace('Från: ', ''));
+      const url = `${window.location.origin}${window.location.pathname}?card=${selectedCard}&msg=${msg}&from=${from}`;
+      navigator.clipboard.writeText(url).then(() => {
+        alert('Länk kopierad!');
+      });
+    }
+
+    function shareFacebook() {
+      const msg = encodeURIComponent(document.getElementById('ecard-custom').textContent);
+      const from = encodeURIComponent(document.getElementById('ecard-from').textContent.replace('Från: ', ''));
+      const url = `${window.location.origin}${window.location.pathname}?card=${selectedCard}&msg=${msg}&from=${from}`;
+      const fbURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+      window.open(fbURL, '_blank');
+    }
+
+    function sendViaEmail() {
+      const from = document.getElementById('fromName').value;
+      const msg = document.getElementById('ecard-custom').textContent;
+      const msgEncoded = encodeURIComponent(msg);
+      const fromEncoded = encodeURIComponent(from);
+      const link = `${window.location.origin}${window.location.pathname}?card=${selectedCard}&msg=${msgEncoded}&from=${fromEncoded}`;
+
+      const htmlBody = `Du har fått ett e-kort från ${from}:
+
+${msg}
+
+Läs ditt kort här: ${link}`;
+      const body = encodeURIComponent(htmlBody);
+      const subject = encodeURIComponent(`E-kort från ${from}`);
+
+      const mailto = `mailto:?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+    }
+
+    function updatePreview() {
+      const from = document.getElementById('fromName').value;
+      const msg = document.getElementById('customMsg').value;
+      document.getElementById('ecard-custom').textContent = msg || '';
+      document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
+    }
+
+    const mainSwiper = new Swiper('.main-swiper', {
+      spaceBetween: 10,
+      on: {
+        slideChange: function () {
+          const index = this.activeIndex;
+          if (index === 0) selectCard('vitva', false);
+          if (index === 1) selectCard('bio', false);
+          if (index === 2) selectCard('friend', false);
+        }
+      }
+    });
+
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('card')) {
+        selectedCard = params.get('card');
+        const msg = decodeURIComponent(params.get('msg') || cardMap[selectedCard].defaultMessage);
+        const from = decodeURIComponent(params.get('from') || '');
+        const bgMap = {
+          vitva: 'images/card1.jpg',
+          bio: 'images/card2.jpg',
+          friend: 'images/card3.jpg'
+        };
+        document.getElementById('ecard-img').src = bgMap[selectedCard];
+        document.getElementById('ecard-text').textContent = cardMap[selectedCard].defaultMessage;
+        document.getElementById('ecard-custom').textContent = msg;
+        document.getElementById('ecard-from').textContent = from ? `Från: ${from}` : '';
+        document.getElementById('ecard-view').style.display = 'block';
+        document.getElementById('ecard-form').style.display = 'none';
+        document.querySelector('.main-swiper').style.display = 'none';
+        document.querySelector('.thumbs').style.display = 'none';
+
+        document.getElementById('ecard-view').classList.add('ecard-view-sharing');
+      }
+    }
   </script>
 </body>
 </html>
